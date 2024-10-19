@@ -93,7 +93,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: #F6EEE8;
         }
 
         tr:hover {
@@ -110,6 +110,7 @@
                 <li><a href="{{ route('adminpanel.adminaddbooks') }}">Додати Книгу</a></li>
                 <li><a href="{{ route('adminpanel.adminmoderationbooks') }}">Модернізація Книг</a></li>
             </ul>
+            <a href="{{ route('index') }}">Вийти</a>
         </aside>
 
         <main class="content">
