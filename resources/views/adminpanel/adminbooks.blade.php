@@ -88,11 +88,11 @@
         }
 
         th {
-            background-color: #f4f4f4;
+            background-color: #F6EEE8;
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: #F6EEE8;
         }
 
         tr:hover {
@@ -200,6 +200,8 @@
             @foreach($books as $book)
             <tr>
                 <td>{{ $book->id }}</td>
+                <!-- <td> <img src="{{ $book->cover_image_url}}" alt="asd"></td> -->
+
                 <td>{{ $book->title }}</td>
                 <td>{{ $book->author }}</td>
                 <td>{{ $book->publication_year }}</td>
