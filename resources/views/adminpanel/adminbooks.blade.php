@@ -69,34 +69,69 @@
             margin-bottom: 20px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        
+        /*/ Add more styles as needed */
+        .content-books {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            
+            
+            
+        }
+        .book-card {
+            display: flex;
+            align-items: flex-start;
+            background-color: #fff;
+            padding: 5px;
+            max-width: 400px;
+            background-color: #f9f9f9;
+            max-height: 22px;
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 220px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .book-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .book-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .book-author {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .book-rating {
+            font-size: 1.1em;
+            color: #333;
             margin-bottom: 20px;
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid #ccc;
+        .edit-btn {
+            background-color: #8F5E48;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #F6EEE8;
-        }
-
-        tr:nth-child(even) {
-            background-color: #F6EEE8;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
+        .edit-btn:hover {
+            background-color: #7a4e3a;
         }
     </style>
     <div class="admin-panel">
@@ -113,105 +148,21 @@
 
         <main class="content">
             <h1>Книги в Наявності</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID Книги</th>
-                        <th>Назва</th>
-                        <th>Автор</th>
-                        <th>Рік Публікації</th>
-                        <th>Кількість</th>
-                        <th>Ціна</th>
-                        <th>Додатково</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Війна і мир</td>
-                        <td>Лев Толстой</td>
-                        <td>1869</td>
-                        <td>5</td>
-                        <td>300 грн</td>
-                        <td>Класика</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>1984</td>
-                        <td>Джордж Орвелл</td>
-                        <td>1949</td>
-                        <td>10</td>
-                        <td>200 грн</td>
-                        <td>Антиутопія</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Гаррі Поттер і філософський камінь</td>
-                        <td>Джоан Роулінг</td>
-                        <td>1997</td>
-                        <td>8</td>
-                        <td>150 грн</td>
-                        <td>Фентезі</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>
-                        <td>Майстер і Маргарита</td>
-                        <td>Михайло Булгаков</td>
-                        <td>1967</td>
-                        <td>4</td>
-                        <td>250 грн</td>
-                        <td>Російська класика</td>
-                    </tr>
-                    <tr>
-                        <td>005</td>
-                        <td>Степові волки</td>
-                        <td>Герман Гессе</td>
-                        <td>1927</td>
-                        <td>6</td>
-                        <td>320 грн</td>
-                        <td>Філософська література</td>
-                    </tr>
-                    <tr>
-                        <td>006</td>
-                        <td>Вбивство в Східному експресі</td>
-                        <td>Агата Крісті</td>
-                        <td>1934</td>
-                        <td>7</td>
-                        <td>180 грн</td>
-                        <td>Детектив</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h1>Список Книг</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Назва</th>
-                <th>Автор</th>
-                <th>Рік Публікації</th>
-                <th>Опис</th>
-                <th>Ціна</th>
-                <th>Кількість</th>
-            </tr>
-        </thead>
-        <tbody>
+           <div class="content-books">
             @foreach($books as $book)
-            <tr>
-                <td>{{ $book->id }}</td>
-                <!-- <td> <img src="{{ $book->cover_image_url}}" alt="asd"></td> -->
-
-                <td>{{ $book->title }}</td>
-                <td>{{ $book->author }}</td>
-                <td>{{ $book->publication_year }}</td>
-                <td>{{ $book->description }}</td>
-                <td>{{ $book->price }}</td>
-                <td>{{ $book->quantity }}</td>
-            </tr>
+               
+                <div class="book-card">
+                    <img src={{$book->cover_image_url}}
+                        alt="Обкладинка книги" class="book-cover">
+                    <div class="book-details">
+                        <h2 class="book-title">{{ $book->title }}</h2>
+                        <p class="book-author">{{ $book->author }}</p>
+                        <p class="book-rating">Рейтинг: 4.5</p>
+                        <button class="edit-btn">Редагувати</button>
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
+            </div>
         </main>
     </div>
 </body>
