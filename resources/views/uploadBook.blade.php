@@ -265,6 +265,75 @@
                 max-height: 120px;
             }
         }
+
+
+
+
+        form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center; 
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #8B4D31;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0 auto; 
+}
+
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #8B4D31;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 40%;
+    margin: 0 auto;
+}
+
+
+    form button {
+    background-color: #8B4D31; 
+    color: #ffffff; 
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 20px; 
+    cursor: pointer;
+    width: 40%; 
+    margin: 0 auto;
+    display: block;
+}
+
+form button:hover {
+    background-color: #734222;
+}
     </style>
 </head>
 
@@ -273,7 +342,7 @@
 
         <h2>Меню</h2>
         <aside>
-            @include('sidebar')  <!-- Подключаем боковое меню -->
+            @include('sidebar')
         </aside>
     </div>
     <div class="content">
@@ -314,7 +383,8 @@
           
         </div>    -->
             <h1>Завантаження книги</h1>
-
+            <p style="font-size:20px;">Надихайте інших на творчість та створення!</p>
+            <h2>Крок1</h2>
             @if ($errors->any())
                 <div style="color: red;">
                     <ul>
@@ -328,40 +398,44 @@
             <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="title">Назва книги:</label>
-                    <input type="text" id="title" name="title" value="{{ old('title') }}" required>
+                    {{-- <label for="title">Назва книги:</label> --}}
+                    <input type="text" id="title" name="title" value="{{ old('title') }}" placeholder="Назва книги" required>
+                    {{-- <input type="text" id="title" name="title" value="{{ old('title') }}" required> --}}
                 </div>
 
                 <div>
-                    <label for="description">Опис книги:</label>
-                    <textarea id="description" name="description" required>{{ old('description') }}</textarea>
+                    {{-- <label for="description">Опис книги:</label> --}}
+                    <textarea id="description" name="description" placeholder="Опис книги" required>{{ old('description') }}</textarea>
                 </div>
 
                 <div>
-                    <label for="language">Мова:</label>
-                    <input type="text" id="language" name="language" value="{{ old('language') }}" required>
+                    {{-- <label for="language">Мова:</label> --}}
+                    <input type="text" id="language" name="language" value="{{ old('language') }}" placeholder="Мова" required>
                 </div>
 
                 <div>
-                    <label for="genre">Жанр:</label>
-                    <input type="text" id="genre" name="genre" value="{{ old('genre') }}" required>
+                    {{-- <label for="genre">Жанр:</label> --}}
+                    <input type="text" id="genre" name="genre" value="{{ old('genre') }}" placeholder="Жанр" required>
                 </div>
 
                 <div>
-                    <label for="age">Вік:</label>
-                    <input type="text" id="age" name="age" value="{{ old('age') }}" required>
+                    {{-- <label for="age">Вік:</label> --}}
+                    <input type="text" id="age" name="age" value="{{ old('age') }}" placeholder="Вік" required>
                 </div>
 
                 <div>
-                    <label for="year">Рік видання:</label>
-                    <input type="number" id="year" name="year" value="{{ old('year') }}" required>
+                    {{-- <label for="year">Рік видання:</label> --}}
+                    <input type="number" id="year" name="year" value="{{ old('year') }}" placeholder="Рік видання" required>
                 </div>
 
                 <div>
-                    <label for="pages">Кількість сторінок:</label>
-                    <input type="number" id="pages" name="pages" value="{{ old('pages') }}" required>
+                    {{-- <label for="pages">Кількість сторінок:</label> --}}
+                    <input type="number" id="pages" name="pages" value="{{ old('pages') }}" placeholder="Кількість сторінок" required>
                 </div>
-
+                <div>
+                    {{-- <label for="price">Ціна:</label> --}}
+                    <input type="number" id="price" name="price" value="{{ old('price') }}" placeholder="Ціна" step="0.01" required>
+                </div>
                 <div>
                     <label for="book_file">Файл книги:</label>
                     <input type="file" id="book_file" name="book_file" accept=".pdf,.doc,.docx" required>
@@ -372,12 +446,8 @@
                     <input type="file" id="cover_image" name="cover_image" accept="image/*" required>
                 </div>
 
-                <div>
-                    <label for="price">Ціна:</label>
-                    <input type="number" id="price" name="price" value="{{ old('price') }}" step="0.01" required>
-                </div>
-
-                <button type="submit">Перегляд</button>
+                <button type="submit">Зберегти</button>
+             
             </form>
             <script>
 

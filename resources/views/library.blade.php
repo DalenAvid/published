@@ -252,6 +252,7 @@
                             <div class="book-info">
                                 <div class="book-title">{{ $book->title }}</div>
                                 <div class="book-author">{{ $book->author }}</div>
+                                {{-- <div class="book-author">{{ $book->user->name }}</div> --}}
                                 <div class="book-rating">
                                     ⭐⭐⭐⭐⭐
                                 </div>
