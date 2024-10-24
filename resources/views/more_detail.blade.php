@@ -268,6 +268,27 @@
     background-color: #d3a992;
     color: #fff;
 }
+.reviews-link {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.review-button {
+    font-size: 18px;
+    color: #6d4831;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #d3a992;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.review-button:hover {
+    background-color: #d3a992;
+    color: #fff;
+}
+
 </style>
 <body>
     <div class="back-button">
@@ -325,7 +346,17 @@
 
                 <h2 style="display: inline;">Рік видання:</h2>
                 <p style="display: inline;">{{ $book->year }}</p><br>
+                <div class="reviews-link">
+                    <a href="{{ route('book.reviews', ['id' => $book->id]) }}" class="review-button">
+                        Відкрити відгуки →
+                    </a>
+                </div>
             </div>
+            {{-- <div class="reviews-link">
+                <a href="{{ route('book.reviews', ['id' => $book->id]) }}" class="review-button">
+                    Відкрити відгуки →
+                </a>
+            </div> --}}
     </div>
 </div>
  

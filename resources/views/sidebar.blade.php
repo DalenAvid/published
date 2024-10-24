@@ -7,6 +7,7 @@
     }
 
     .sidebar {
+        margin-left:-62px;
         width: 250px;
         color: white;
         height: 100vh;

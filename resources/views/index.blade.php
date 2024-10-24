@@ -299,7 +299,7 @@
 }
 
 .next {
-    right: 320px; 
+    right: 260px; 
 }
 
 .prev.disabled, .next.disabled {
@@ -319,7 +319,7 @@
         
      
         <aside>
-            @include('sidebar')  <!-- Подключаем боковое меню -->
+            @include('sidebar') 
         </aside>
     </div>
 

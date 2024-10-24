@@ -22,4 +22,8 @@ class Book extends Model
         'book_file',
         'cover_image',
     ];
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
