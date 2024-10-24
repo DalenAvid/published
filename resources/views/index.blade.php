@@ -314,7 +314,7 @@
                         <div class="book-info">
                             <h3>{{ $book->title }}</h3>
                             <p>{{ $book->author ?? 'Автор невідомий' }}</p>
-                            <p> ⭐⭐⭐⭐⭐</p>
+                            <p> ⭐⭐⭐⭐</p>
                             <p>{{ $book->genre }}</p>
                             <button class="buy"
                                 onclick="window.location.href='{{ route('more_detail', ['id' => $book->id]) }}'">Придбати</button>
@@ -335,7 +335,7 @@
                                 <div class="title">{{ $book->title }}</div>
                                 <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
                                 <div class="genre" style="display: none;">{{ $book->genre ?? 'Невідомий жанр' }}</div>
-                                <p> ⭐⭐⭐⭐⭐</p>
+                                <p> ⭐⭐⭐⭐</p>
                             </div>
                         </div>
                     @endforeach
