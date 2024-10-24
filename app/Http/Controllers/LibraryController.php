@@ -12,9 +12,9 @@ class LibraryController extends Controller
     public function index()
     {
         $books = Book::all();
-        
         return view('library.index', compact('books'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -23,9 +23,10 @@ class LibraryController extends Controller
             'language' => 'required',
             'genre' => 'required',
             'age' => 'required',
-            'year' => 'required',
-            'pages' => 'required',
+            'year' => 'required|integer',
+            'pages' => 'required|integer',
             'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048', // Додано для перевірки
         ]);
 
         $book = new Book();
@@ -42,10 +43,16 @@ class LibraryController extends Controller
             $book->cover_image = $coverImage;
         }
 
+        if ($request->hasFile('book_file')) { // Додано для обробки файлів книг
+            $bookFile = $request->file('book_file')->store('books', 'public');
+            $book->book_file = $bookFile;
+        }
+
         $book->save();
 
         return redirect()->route('library.index')->with('success', 'Книгу додано успішно!');
     }
+
     public function preview(Request $request)
     {
         $validatedData = $request->validate([
@@ -56,12 +63,11 @@ class LibraryController extends Controller
             'age' => 'required|string|max:10',
             'year' => 'required|integer',
             'pages' => 'required|integer',
-            'book_file' => 'required|file|mimes:pdf,doc,docx',
+            'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048', // Додано для валідації
             'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $coverImage = $request->file('cover_image');
-        $coverImagePath = $coverImage->store('public/covers');
+        $coverImagePath = $request->file('cover_image')->store('public/covers');
 
         session()->put('book_data', [
             'title' => $validatedData['title'],
@@ -76,12 +82,7 @@ class LibraryController extends Controller
 
         return redirect()->route('preview.new');
     }
-    // public function index()
-    // {
-    //     $books = Book::all();
-        
-    //     return view('library.index', compact('books'));
-    // }
+
     public function library()
     {
         $bookData = session()->get('book_data');
@@ -101,5 +102,4 @@ class LibraryController extends Controller
 
         return view('library', compact('books'));
     }
-   
 }

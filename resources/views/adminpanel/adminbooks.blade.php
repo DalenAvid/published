@@ -25,40 +25,7 @@
             display: flex;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            height: 100vh;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 20px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #555;
-        }
+        
 
         .content {
             flex-grow: 1;
@@ -69,24 +36,22 @@
             margin-bottom: 20px;
         }
 
-        
+
         /*/ Add more styles as needed */
         .content-books {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            
-            
-            
         }
+
         .book-card {
             display: flex;
             align-items: flex-start;
-            background-color: #fff;
-            padding: 5px;
-            max-width: 400px;
             background-color: #f9f9f9;
-            max-height: 22px;
+            padding: 10px;
+            max-width: 400px;
+            /* Видалено обмеження висоти */
+            height: auto;
         }
 
         .book-cover {
@@ -135,33 +100,26 @@
         }
     </style>
     <div class="admin-panel">
-        <aside class="sidebar">
+        <aside>
             <h2>Меню</h2>
-            <ul>
-                <li><a href="{{ route('adminpanel') }}">Замовлення</a></li>
-                <li><a href="{{ route('adminpanel.adminorderhistory') }}">Історія Замовлень</a></li>
-                <li><a href="{{ route('adminpanel.adminbooks') }}">Книги</a></li>
-                <li><a href="{{ route('adminpanel.adminaddbooks') }}">Додати Книгу</a></li>
-                <li><a href="{{ route('adminpanel.adminmoderationbooks') }}">Модернізація Книг</a></li>
-            </ul>
+            @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 
         <main class="content">
             <h1>Книги в Наявності</h1>
-           <div class="content-books">
-            @foreach($books as $book)
-               
-                <div class="book-card">
-                    <img src={{$book->cover_image_url}}
-                        alt="Обкладинка книги" class="book-cover">
-                    <div class="book-details">
-                        <h2 class="book-title">{{ $book->title }}</h2>
-                        <p class="book-author">{{ $book->author }}</p>
-                        <p class="book-rating">Рейтинг: 4.5</p>
-                        <button class="edit-btn">Редагувати</button>
+            <div class="content-books">
+                @foreach($books as $book)
+
+                    <div class="book-card">
+                        <img src={{$book->cover_image}} alt="Обкладинка книги" class="book-cover">
+                        <div class="book-details">
+                            <h2 class="book-title">{{ $book->title }}</h2>
+                            <p class="book-author">{{ $book->author }}</p>
+                            <p class="book-rating">Рейтинг: 4.5</p>
+                            <button class="edit-btn">Редагувати</button>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
             </div>
         </main>
     </div>

@@ -25,40 +25,7 @@
             display: flex;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            height: 100vh;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 20px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #555;
-        }
+        
 
         .content {
             flex-grow: 1;
@@ -116,19 +83,13 @@
         }
     </style>
     <div class="admin-panel">
-        <aside class="sidebar">
+        <aside>
             <h2>Меню</h2>
-            <ul>
-                <li><a href="{{ route('adminpanel') }}">Замовлення</a></li>
-                <li><a href="{{ route('adminpanel.adminorderhistory') }}">Історія Замовлень</a></li>
-                <li><a href="{{ route('adminpanel.adminbooks') }}">Книги</a></li>
-                <li><a href="{{ route('adminpanel.adminaddbooks') }}">Додати Книгу</a></li>
-                <li><a href="{{ route('adminpanel.adminmoderationbooks') }}">Модернізація Книг</a></li>
-            </ul>
+            @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 
         <main class="content">
-            <h1>Модернізація Книг</h1>
+            <h1>Модерація Книг</h1>
             <form action="#" method="POST">
                 <div class="form-group">
                     <label for="bookId">ID Книги</label>

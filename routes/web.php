@@ -208,6 +208,12 @@ Route::get('/reports/review-published', [ReviewPublishedController::class, 'inde
 
 
 Route::get('/adminpanel/adminaddbooks', [AdminAddBookController::class, 'index'])->name('adminpanel.adminaddbooks');
+//Create 
+
+
+Route::get('/adminpanel/adminaddbook', [AdminAddBookController::class, 'create'])->name('adminaddbook.create');
+Route::post('/adminpanel/adminaddbook', [AdminAddBookController::class, 'store'])->name('adminaddbook.store');
+//books
 Route::get('/adminpanel/adminbooks', [AdminBooksController::class, 'index'])->name('adminpanel.adminbooks');
 Route::get('/adminpanel/adminmoderationbooks', [AdminModerationBooksController::class, 'index'])->name('adminpanel.adminmoderationbooks');
 Route::get('/adminpanel/adminorderhistory', [AdminOrderHistoryController::class, 'index'])->name('adminpanel.adminorderhistory');
