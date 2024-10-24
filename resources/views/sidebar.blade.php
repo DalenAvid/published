@@ -12,6 +12,8 @@
         background-color: #fff;
         /* Фон для прикладу */
         padding-top: 20px;
+        margin-left: 50px;
+        right: 100px;
     }
 
     .profile-section {
