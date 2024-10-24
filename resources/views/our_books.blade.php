@@ -613,20 +613,20 @@ color: #666;
         </header>
     </div>
     <div class="container">
-        <h2>Ваші книги</h2>
+        {{-- <h2>Ваші книги</h2>
         @if($purchasedBooks->isEmpty())
             <p>У вас немає куплених книг.</p>
-        @else
+        @else --}}
             <div class="book-list">
                 @foreach($purchasedBooks as $purchasedBook)
                     <div class="book-item">
                         <h3>{{ $purchasedBook->book->title }}</h3>
                         <p>{{ $purchasedBook->book->description }}</p>
-                        <a href="{{ route('books.show', $purchasedBook->book->id) }}">Детальніше</a>
+                        {{-- <a href="{{ route('books.show', $purchasedBook->book->id) }}">Детальніше</a> --}}
                     </div>
                 @endforeach
             </div>
-        @endif
+        {{-- @endif --}}
     </div>
         <script>
         </script>

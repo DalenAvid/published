@@ -121,8 +121,10 @@ Route::get('/page1/remove/{id}', [BookController::class, 'removeBookFromPage1'])
  Route::get('/thanks_for_your_order', [OrderController::class, 'showThanks'])->name('thanks_for_your_order');
 Route::get('/checkout', [OrderController::class, 'showCheckout'])->name('checkout.show');
 
+// Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
 Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/thanks-for-your-order', [CheckoutController::class, 'thanksForYourOrder'])->name('thanks_for_your_order');
 
 Route::post('/book/save/{id}', [BookController::class, 'saveBook'])->name('book.save');
 

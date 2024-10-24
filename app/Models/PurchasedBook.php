@@ -11,6 +11,7 @@ class PurchasedBook extends Model
     protected $fillable = [
         'user_id',
         'book_id',
+        'order_id',
     ];
     public function user()
     {
