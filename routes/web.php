@@ -261,6 +261,9 @@ Route::get('/adminpanel/adminaddbooks', [AdminAddBookController::class, 'index']
 
 Route::get('/adminpanel/adminaddbook', [AdminAddBookController::class, 'create'])->name('adminaddbook.create');
 Route::post('/adminpanel/adminaddbook', [AdminAddBookController::class, 'store'])->name('adminaddbook.store');
+
+Route::get('/adminpanel/adminaddbook/{id}', [AdminAddBookController::class, 'edit'])->name('adminaddbook.edit');
+Route::post('/adminpanel/adminaddbook/{id}', [AdminAddBookController::class, 'update'])->name('adminaddbook.update');
 //books
 Route::get('/adminpanel/adminbooks', [AdminBooksController::class, 'index'])->name('adminpanel.adminbooks');
 Route::get('/adminpanel/adminmoderationbooks', [AdminModerationBooksController::class, 'index'])->name('adminpanel.adminmoderationbooks');

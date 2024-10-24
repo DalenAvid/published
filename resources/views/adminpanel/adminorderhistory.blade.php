@@ -68,7 +68,7 @@
     </style>
     <div class="admin-panel">
         <aside>
-            <h2>Меню</h2>
+            <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 

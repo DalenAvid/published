@@ -25,7 +25,7 @@
             display: flex;
         }
 
-        
+
 
         .content {
             flex-grow: 1;
@@ -101,7 +101,7 @@
     </style>
     <div class="admin-panel">
         <aside>
-            <h2>Меню</h2>
+            <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 
@@ -116,7 +116,7 @@
                             <h2 class="book-title">{{ $book->title }}</h2>
                             <p class="book-author">{{ $book->author }}</p>
                             <p class="book-rating">Рейтинг: 4.5</p>
-                            <button class="edit-btn">Редагувати</button>
+                            <a href="{{ route('adminaddbook.edit', $book->id) }}" class="edit-btn">Редагувати</a>
                         </div>
                     </div>
                 @endforeach
