@@ -274,7 +274,42 @@ color: #666;
 .button1:hover {
     background-color: #6F4C3E; 
 }
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 30px;
+    margin-left: 160px;
+}
 
+.card {
+    display: flex;
+    align-items: center; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card img {
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.author {
+    font-size: 14px;
+    color: #555;
+}
 </style>
 <body>
     <div class="sidebar">
@@ -295,21 +330,15 @@ color: #666;
                 </div>
                 <div class="title">
                     знову його приховати.</div>
-            {{-- <div class="header-search">
-                <input type="text" placeholder="Пошук...">
-            </div> --}}
             <div class="button-container">
-                <button class="button1">Приховати</button>
+                <form action="{{ route('saved.index') }}" method="GET">
+                    <button type="submit" class="button1">Приховати</button>
+                </form>
             </div>
            
         </header>
     </div>
-    
-    {{-- <div class="button-container">
-        <button class="button">Читати останню книгу</button>
-        <button class="button">Слухати останню книгу</button>
-    </div> --}}
-        <script>
+ <script>
         </script>
     </body>
 </html>

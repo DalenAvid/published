@@ -387,10 +387,6 @@
         text-decoration: none;
         width: 100%;
     }
-    .sidebar ul li a:hover {
-        color: brown;
-    }
-
     .sidebar ul li::before {
     content: '>'; 
     position: absolute;
@@ -428,16 +424,31 @@
         border: none;
         border-radius: 3px;
     } */
-    .header-search {
+  
+     .header-search {
      margin-top: -30px;  
     align-self: flex-end;
-}
-
+} 
+/* 
 .header-search input {
     padding: 5px 10px;
     font-size: 16px;
     border: none;
     border-radius: 3px;
+} */
+.header-search input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #8B4D31;
+    border-radius: 20px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header-search input:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
 }
     .container {
         display: flex;
@@ -578,14 +589,21 @@ color: #666;
             </div>
         </div>
         <h2>Меню</h2>
-        @include('sidebar')
+        <ul>
+            <li><a href="{{ route('index') }}">Домівка</a></li>
+            <li><a href="{{ route('library') }}">Бібліотека</a></li>
+            <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
+            <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
+            <li><a href="{{ route('saved.index') }}">Збережене</a></li>
+            <li><a href="{{ route('profile.show') }}">Профіль</a></li>
+        </ul>
     </div>
 
     <div class="content">
         <header class="header">
             <div class="header-title">Ваші книги</div>
             <div class="header-search">
-                <input type="text" placeholder="Пошук...">
+                <input type="text" placeholder="Шукати">
             </div>
             <div class="button-container">
                 <button class="button1">Читати останню книгу</button>
@@ -594,11 +612,22 @@ color: #666;
            
         </header>
     </div>
-    
-    {{-- <div class="button-container">
-        <button class="button">Читати останню книгу</button>
-        <button class="button">Слухати останню книгу</button>
-    </div> --}}
+    <div class="container">
+        {{-- <h2>Ваші книги</h2>
+        @if($purchasedBooks->isEmpty())
+            <p>У вас немає куплених книг.</p>
+        @else --}}
+            <div class="book-list">
+                @foreach($purchasedBooks as $purchasedBook)
+                    <div class="book-item">
+                        <h3>{{ $purchasedBook->book->title }}</h3>
+                        <p>{{ $purchasedBook->book->description }}</p>
+                        {{-- <a href="{{ route('books.show', $purchasedBook->book->id) }}">Детальніше</a> --}}
+                    </div>
+                @endforeach
+            </div>
+        {{-- @endif --}}
+    </div>
         <script>
         </script>
     </body>

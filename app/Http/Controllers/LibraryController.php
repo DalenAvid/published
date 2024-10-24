@@ -9,6 +9,43 @@ use Illuminate\Support\Facades\Storage;
 
 class LibraryController extends Controller
 {
+    public function index()
+    {
+        $books = Book::all();
+        
+        return view('library.index', compact('books'));
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'language' => 'required',
+            'genre' => 'required',
+            'age' => 'required',
+            'year' => 'required',
+            'pages' => 'required',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $book = new Book();
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->language = $request->language;
+        $book->genre = $request->genre;
+        $book->age = $request->age;
+        $book->year = $request->year;
+        $book->pages = $request->pages;
+
+        if ($request->hasFile('cover_image')) {
+            $coverImage = $request->file('cover_image')->store('covers', 'public');
+            $book->cover_image = $coverImage;
+        }
+
+        $book->save();
+
+        return redirect()->route('library.index')->with('success', 'Книгу додано успішно!');
+    }
     public function preview(Request $request)
     {
         $validatedData = $request->validate([
@@ -39,12 +76,12 @@ class LibraryController extends Controller
 
         return redirect()->route('preview.new');
     }
-    public function index()
-    {
-        $books = Book::all();
+    // public function index()
+    // {
+    //     $books = Book::all();
         
-        return view('library.index', compact('books'));
-    }
+    //     return view('library.index', compact('books'));
+    // }
     public function library()
     {
         $bookData = session()->get('book_data');

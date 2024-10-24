@@ -271,16 +271,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-    </head>
-    <style>
-     body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
     
-    .sidebar {
+            .sidebar {
         width: 250px;
         color: white;
         height: 100vh;
@@ -373,10 +372,6 @@
             text-decoration: none;
             width: 100%;
         }
-        .sidebar ul li a:hover {
-        color: brown;
-    }
-
         .sidebar ul li::before {
         content: '>'; 
         position: absolute;
@@ -384,199 +379,168 @@
         top:15px;
         color: black;
     }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            flex-grow: 1;
-        }
+            .content {
+                margin-left: 250px;
+                padding: 20px;
+                flex-grow: 1;
+            }
     
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 20px;
-        }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30px 20px;
+            }
     
-        .header-title {
-            color: black;
-            font-size: 26px;
-            font-weight: bold;
-            margin-left: 200px;
-        }
-        .header-subtitle {
-            font-size: 18px;
-            color: #555;
-            margin-left: 220px;
-        }
-        .header-search input {
-            padding: 5px 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 3px;
-        }
+            .header-title {
+                color: black;
+                font-size: 26px;
+                font-weight: bold;
+                margin-left: 150px;
+            }
     
-        .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-        }
+            .header-search input {
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #8B4D31;
+                border-radius: 20px;
+                width: 200px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: box-shadow 0.3s ease;
+            }
     
-        .card {
-            background-color: #ccc;
-            width: 18%;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 5px;
-            position: relative;
-        }
+            .header-search input:focus {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                outline: none;
+            }
     
-        .card img {
-            width: 100%;
-            border-radius: 5px;
-        }
+            .book-list {
+                display: grid; 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 30px; 
+                justify-items: start;
+                margin-left:160px;
+            }
     
-        .rating {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-        }
+            .book-item {
+                display: flex;
+                align-items: center;
+            }
     
-        .title {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-        }
+            .book-cover img {
+                width: 120px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin-right: 15px;
+            }
     
-        .author {
-            font-size: 14px;
-            color: #555;
-        }
-    .library-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.book-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-.book-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.book-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-}
-
-.book-item img {
-    max-width: 100%;
-    height: auto;
-}
-
-.book-cover {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.book-title {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-.book-genre {
-    font-size: 14px;
-    color: #666;
-}
-    </style>
+            .book-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+    
+            .book-title {
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0;
+            }
+    
+            .book-author {
+                font-size: 14px;
+                color: #555;
+                margin: 5px 0;
+            }
+    
+            .book-rating {
+                font-size: 16px;
+            }
+    
+            .img-fluid {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 20px 0;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .book-genre {
+             margin-bottom: 10px; 
+             text-align: left; 
+            }
+    
+            .book-genre h2 {
+                font-size: 24px; 
+                color: black;
+                font-weight: bold; 
+                margin-top: 5px;
+                margin-left:170px;
+            }
+        </style>
+    </head>
     <body>
         <div class="sidebar">
             <div class="profile-section">
                 <div class="profile-picture">
-                    <img id="profileImage" src="{{ asset('images/default-avatar.png') }}" >
+                    <img id="profileImage" src="{{ asset('images/default-avatar.png') }}">
                     <h2>{{ Auth::user()->name }}</h2>
                 </div>
             </div>
             <h2>Меню</h2>
-            @include('sidebar')
+            <ul>
+                <li><a href="{{ route('index') }}">Домівка</a></li>
+                <li><a href="{{ route('library') }}">Бібліотека</a></li>
+                <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
+                <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
+                <li><a href="{{ route('saved.index') }}">Збережене</a></li>
+                <li><a href="{{ route('profile.show') }}">Профіль</a></li>
+            </ul>
         </div>
     
         <div class="content">
             <header class="header">
                 <div class="header-title">Бібліотека</div>
                 <div class="header-search">
-                    <input type="text" placeholder="Пошук...">
+                    {{-- <input type="text" placeholder="Шукати"> --}}
+                    <div class="header-search">
+                        <form action="{{ route('books.search') }}" method="GET">
+                            <input type="text" name="query" placeholder="Шукати книги" value="{{ request('query') }}">
+                            <button type="submit" style="display:none;"></button>
+                        </form>
+                    </div>
                 </div>
             </header>
-            <div class="book-list">
-                @foreach($books as $book)
-                    <div class="book-item">
-                        <div class="book-cover">
-                            <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover of {{ $book->title }}">
-                        </div>
-                        <div class="book-info">
-                            <div class="book-title">{{ $book->title }}</div>
-                            <div class="book-author">{{ $book->author }}</div> 
-                            <div class="book-rating">
-                                ⭐⭐⭐⭐☆ 
+    
+            @foreach ($books->groupBy('genre') as $genre => $genreBooks)
+                <div class="book-genre">
+                    <h2 >{{ $genre }}</h2> 
+                </div>
+            
+                <div class="book-list">
+                    @foreach ($genreBooks as $book)
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
+                    
+                            </div>
+                            <div class="book-info">
+                                <div class="book-title">{{ $book->title }}</div>
+                                <div class="book-author">{{ $book->author }}</div>
+                                <div class="book-rating">
+                                    ⭐⭐⭐⭐⭐
+                                </div>
                             </div>
                         </div>
-                        {{-- <h2>{{ $book->title }}</h2>
-                        <p><strong>Description:</strong> {{ $book->description }}</p>
-                        <p><strong>Language:</strong> {{ $book->language }}</p>
-                        <p><strong>Genre:</strong> {{ $book->genre }}</p>
-                        <p><strong>Age:</strong> {{ $book->age }}</p>
-                        <p><strong>Year:</strong> {{ $book->year }}</p>
-                        <p><strong>Pages:</strong> {{ $book->pages }}</p>
-                        <p><strong>Book File:</strong> <a href="{{ asset('storage/' . $book->book_file) }}">Download</a></p>
-                        <p><strong>Cover:</strong> <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover Image" width="150"></p> --}}
-                    </div>
-                    <hr>
-                @endforeach
-            </div>
-            
-            {{-- <div class="header-subtitle">Фантастика</div>
-         
-            @if($books && count($books) > 0)
-            @foreach($books as $book)
-                <h2>{{ $book['title'] }}</h2>
-                <p>Опис: {{ $book['description'] }}</p>
-                <p>Мова: {{ $book['language'] }}</p>
-                <p>Жанр: {{ $book['genre'] }}</p>
-                <p>Вік: {{ $book['age'] }}</p>
-                <p>Рік видання: {{ $book['year'] }}</p>
-                <p>Кількість сторінок: {{ $book['pages'] }}</p>
-                @if(isset($book['cover_image_path']))
-                    <img src="{{ Storage::url($book['cover_image_path']) }}" alt="Обкладинка книги" style="max-width: 200px;">
-                @endif
-                <hr>
+                    @endforeach
+                </div>
             @endforeach
-        @else
-            <p>Немає даних для відображення.</p>
-        @endif    --}}
-            {{-- </div> --}}
-            <script>
-            </script>
-        </body>
+    
+        </div>
+    </body>
     </html>
+    
+
+    
+    {{-- ☆ --}}

@@ -102,12 +102,8 @@
             text-align: left; 
             margin-left: 10px; 
             font-size: 24px;
-            /* margin-bottom: 10px;  */
         }
         .social-media-title h6{
-            /* text-align: left; 
-            margin-left: 10px; 
-            font-size: 24px; */
              margin-top: -16px;  
         }
         .alternative-login {
@@ -238,7 +234,6 @@
                 <h1 class="text-center">Ваш профіль</h1>
                 <div class="profile-header">
                     <div class="profile-picture">
-                        {{-- <img id="profileImage" src="{{ asset('images/default-avatar.png') }}" > --}}
                         <img id="profileImage" src="{{ Auth::user()->photo_url }}" alt="Profile Photo">
 
                         <input type="file" id="imageUpload" style="display:none;" accept="image/*" />
@@ -269,7 +264,7 @@
                         <p>прочитано</p>
                     </div>
                     <div>
-                        <h4>12</h4>
+                        <h4>0</h4>
                         <p>прослухано</p>
                     </div>
                 </div>
@@ -282,7 +277,6 @@
             <div class="grey-rectangle"></div>
 
             <div class="tabs">
-                {{-- <button class="btn btn-light">Опубліковані книги</button> --}}
                 <a href="{{ route('profile.show') }}" class="btn btn-light">Опубліковані книги</a>
                 <button class="btn btn-light">Запитання та відповіді</button>
                 <button class="btn btn-light">Ваші відгуки</button>
@@ -290,51 +284,30 @@
 
              <div class="content">
                 <div class="container">
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 1</div>
-                            <div class="author">Автор книги 1</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 2</div>
-                            <div class="author">Автор книги 2</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 3</div>
-                            <div class="author">Автор книги 3</div>
+                    <div class="content">
+                        <div class="container">
+                            <div class="card">
+                                <div class="image-container">
+                                    <img src="icons/book.png" alt="Обложка книги">
+                                </div>
+                                <div class="info-container">
+                                    <div class="title">Дім у сотнях місць</div>
+                                    <div class="author">Аліна Вернадська</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="image-container">
+                                    <img src="icons/bo.png" alt="Обложка книги">
+                                </div>
+                                <div class="info-container">
+                                    <div class="title">Грати</div>
+                                    <div class="author">Аліна Вернадська</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 4</div>
-                            <div class="author">Автор книги 4</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 5</div>
-                            <div class="author">Автор книги 5</div>
-                        </div>
-                    </div>
+                   
+
                 </div>
             </div>
             
@@ -366,33 +339,6 @@
         const defaultAvatar = "{{ asset('images/default-avatar.png') }}";
         document.getElementById("profileImage").setAttribute("src", defaultAvatar);
         });  
-//  document.getElementById("uploadButton").addEventListener("click", function() {
-//     document.getElementById("imageUpload").click();
-// });
-
-// document.getElementById("imageUpload").addEventListener("change", function() {
-//     const formData = new FormData();
-//     const file = this.files[0];
-//     formData.append('photo', file);
-
-//     fetch('{{ route("profile.uploadPhoto") }}', {
-//         method: 'POST',
-//         headers: {
-//             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-//         },
-//         body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.success) {
-//             document.getElementById("profileImage").setAttribute("src", '{{ asset("storage/profile_photos") }}/' + data.photo);
-//         } else {
-//             alert('Не вдалося завантажити фото.');
-//         }
-//     })
-//     .catch(error => console.error('Помилка:', error));
-// });
-
 </script>
 
 </body>

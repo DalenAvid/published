@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <style>
- body {
+body {
+
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -24,6 +25,7 @@
     flex-direction: column;
     align-items: center;
 }
+
     .profile-section {
         display: flex;
         flex-direction: column;
@@ -295,24 +297,33 @@ color: #666;
                 </div>
                 <div class="title">
                     можете поділитись ним на своїй сторінці</div>
-            {{-- <div class="header-search">
-                <input type="text" placeholder="Пошук...">
-            </div> --}}
+<<<<<<< HEAD
+           
             <div class="button-container">
                 <form action="{{ route('saved1') }}" method="GET">
-                    <button type="submit">Поділитися</button>
+                    <button type="submit" class="button1">Поділитися</button>
                 </form>
-                {{-- <button class="button1">Поділитися</button> --}}
             </div>
            
         </header>
+      
+        <div class="container">
+            @if($savedBooks->isEmpty())
+                <p>У вас немає збережених книг.</p>
+            @else
+                @foreach($savedBooks as $savedBook)
+                    <div class="book-item">
+                        <img src="{{ asset($savedBook->book->cover_image) }}" alt="{{ $savedBook->book->title }}">
+                        <div class="book-info">
+                            <h3>{{ $savedBook->book->title }}</h3>
+                            <p>{{ $savedBook->book->author }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+            
+          
     </div>
-    
-    {{-- <div class="button-container">
-        <button class="button">Читати останню книгу</button>
-        <button class="button">Слухати останню книгу</button>
-    </div> --}}
-        <script>
-        </script>
-    </body>
+</body>
 </html>

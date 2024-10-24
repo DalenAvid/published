@@ -11,6 +11,15 @@ class Book extends Model
     protected $table = 'book';
     public $timestamps = false;
     protected $fillable = [
-        'title', 'description', 'language', 'genre', 'age', 'year', 'pages', 'book_file', 'cover_image'
+        'title',
+        'description',
+        'language',
+        'genre',
+        'age',
+        'year',
+        'pages',
+        'price',
+        'book_file',
+        'cover_image',
     ];
 }

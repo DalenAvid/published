@@ -81,7 +81,6 @@
         width: 100%;
         /* Для повної ширини */
     }
-
 </style>
 
 <div class="container">

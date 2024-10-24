@@ -38,60 +38,38 @@ class UploadBookController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
+            'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'language' => 'required|string|max:50',
-            'genre' => 'required|string|max:255',
-            'age' => 'required|integer',
+            'genre' => 'required|string|max:50',
+            'age' => 'required|string|max:50',
             'year' => 'required|integer',
             'pages' => 'required|integer',
-            'book_file' => 'required|file|mimes:pdf,doc,docx',
-            'cover_image' => 'required|image|mimes:jpg,jpeg,png',
+            'price' => 'required|numeric',
+        ]);
+        $bookFilePath = $request->file('book_file')->store('books');
+        $coverImagePath = $request->file('cover_image')->store('covers');
+        Book::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'language' => $request->language,
+            'genre' => $request->genre,
+            'age' => $request->age,
+            'year' => $request->year,
+            'pages' => $request->pages,
+            'price' => $request->price,
+            'book_file' => $bookFilePath,
+            'cover_image' => $coverImagePath,
         ]);
     
-        try {
-            $bookFilePath = $request->file('book_file')->store('books', 'public');
-            $coverImagePath = $request->file('cover_image')->store('covers', 'public');
-    
-            $book = new Book();
-            $book->title = $validatedData['title'];
-            $book->description = $validatedData['description'];
-            $book->language = $validatedData['language'];
-            $book->genre = $validatedData['genre'];
-            $book->age = $validatedData['age'];
-            $book->year = $validatedData['year'];
-            $book->pages = $validatedData['pages'];
-            $book->book_file = $bookFilePath;
-            $book->cover_image = $coverImagePath;
-            $book->save();
-            echo "Книга успішно додана!";
-    
-            return redirect()->route('library')->with('success', 'Книга успішно додана!');
-        } catch (\Exception $e) {
-            echo "Помилка при додаванні книги: " . $e->getMessage();
-            return redirect()->route('library')->with('error', 'Помилка при додаванні книги!');
-        }
+        return redirect()->route('library')->with('success', 'Книга успішно завантажена!');
     }
-    
-
     public function showPreviewPage(Request $request)
     {
-        // $data = $request->session()->get('book_data', []);
-
-       
-        // $title = $data['title'] ?? ''; 
-        // $description = $data['description'] ?? '';
-        // $language = $data['language'] ?? '';
-        // $genre = $data['genre'] ?? '';
-        // $age = $data['age'] ?? '';
-        // $year = $data['year'] ?? '';
-        // $pages = $data['pages'] ?? '';
-        // $book_file = $data['book_file'] ?? '';
-        // $cover_image = $data['cover_image'] ?? '';
-    
-        // return view('preview', compact('title', 'description', 'language', 'genre', 'age', 'year', 'pages', 'book_file', 'cover_image'));
-        $data = $request->session()->get('book_data', []);
+     $data = $request->session()->get('book_data', []);
 
         return view('preview', compact('data'));
     }

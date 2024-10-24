@@ -191,9 +191,11 @@
 <body>
     <div class="profile-container">
         <div class="profile-header">
+            <a href="javascript:history.back()">
+                ← 
+            </a>
             <h1>Ваш профіль</h1>
             <div class="profile-avatar">
-                {{-- <img id="profileImage" src="{{ asset('images/default-avatar.png') }}"> --}}
                 <img id="profileImage" src="{{ $user->photo_url }}" alt="Avatar" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
                 <span class="delete-avatar" id="deleteAvatar">&times;</span>
                 <input type="file" id="uploadAvatar" accept="image/*">

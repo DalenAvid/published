@@ -164,7 +164,6 @@
                         <h2>Крок 2</h2>
                         <p>Передперегляд книги</p>
                         <button type="button" id="showCoverButton">Завантажити</button>
-                        {{-- <a href="{{ route('library') }}">До бібліотеки</a> --}}
                        
                     </div>
                 </div>

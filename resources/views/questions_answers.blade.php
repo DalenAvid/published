@@ -285,52 +285,6 @@
 
              <div class="content">
                 <div class="container">
-                    {{-- <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 1</div>
-                            <div class="author">Автор книги 1</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 2</div>
-                            <div class="author">Автор книги 2</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 3</div>
-                            <div class="author">Автор книги 3</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 4</div>
-                            <div class="author">Автор книги 4</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                        </div>
-                        <div class="info-container">
-                            <div class="title">Назва книги 5</div>
-                            <div class="author">Автор книги 5</div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
             
         </div>
