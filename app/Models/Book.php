@@ -18,8 +18,8 @@ class Book extends Model
         'age',
         'year',
         'pages',
-        'price',
         'book_file',
         'cover_image',
+        'price',
     ];
 }

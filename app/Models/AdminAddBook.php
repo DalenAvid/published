@@ -8,17 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class AdminAddBook extends Model
 {
     use HasFactory;
-    protected $table = 'books';
+    protected $table = 'book';
 
     protected $fillable = [
         'title',
-        'author',
-        'rating',
-        'cover_image_url',
-        'comment',
         'description',
         'language',
-        'age_recommendation',
-        'publication_year',
+        'genre',
+        'age',
+        'year',
+        'pages',
+        'book_file',
+        'cover_image',
+        'price',
     ];
 }
