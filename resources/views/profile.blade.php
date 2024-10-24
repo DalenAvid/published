@@ -234,7 +234,7 @@
                 <h1 class="text-center">Ваш профіль</h1>
                 <div class="profile-header">
                     <div class="profile-picture">
-                        <img id="profileImage" src="{{ Auth::user()->photo_url }}" alt="Profile Photo">
+                        <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png" alt="Profile Photo">
 
                         <input type="file" id="imageUpload" style="display:none;" accept="image/*" />
                         <button id="uploadButton">Upload</button>

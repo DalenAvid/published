@@ -25,41 +25,6 @@
             display: flex;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            height: 100vh;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 20px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #555;
-        }
-
         .content {
             flex-grow: 1;
             padding: 20px;
@@ -88,7 +53,8 @@
 
         input[type="text"],
         input[type="number"],
-        input[type="url"] {
+        input[type="url"],
+        textarea {
             width: 100%;
             padding: 10px;
             border: 2px solid brown;
@@ -114,60 +80,67 @@
         }
     </style>
     <div class="admin-panel">
-        <aside class="sidebar">
+        <aside>
             <h2>Меню</h2>
-            <ul>
-                <li><a href="{{ route('adminpanel') }}">Замовлення</a></li>
-                <li><a href="{{ route('adminpanel.adminorderhistory') }}">Історія Замовлень</a></li>
-                <li><a href="{{ route('adminpanel.adminbooks') }}">Книги</a></li>
-                <li><a href="{{ route('adminpanel.adminaddbooks') }}">Додати Книгу</a></li>
-                <li><a href="{{ route('adminpanel.adminmoderationbooks') }}">Модернізація Книг</a></li>
-            </ul>
+            @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 
         <main class="content">
             <h1>Додавання Нової Книги</h1>
-            <form action="{{ route('adminaddbook.store') }}" method="POST">
+            <form action="{{ route('adminaddbook.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="title">Назва Книги</label>
+                <div>
+                    <label for="title">Назва книги</label>
                     <input type="text" id="title" name="title" required>
                 </div>
-                <div class="form-group">
-                    <label for="author">Автор</label>
-                    <input type="text" id="author" name="author" required>
+
+                <div>
+                    <label for="description">Опис</label>
+                    <textarea id="description" name="description" required></textarea>
                 </div>
-                <div class="form-group">
+
+                <div>
+                    <label for="language">Мова</label>
+                    <input type="text" id="language" name="language" required>
+                </div>
+
+                <div>
                     <label for="genre">Жанр</label>
                     <input type="text" id="genre" name="genre" required>
                 </div>
-                <div class="form-group">
-                    <label for="description">Опис</label>
-                    <textarea id="description" name="description" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="language">Мова</label>
-                    <input id="language" name="language"></input>
-                </div>
-                <div class="form-group">
-                    <label for="age">Вік</label>
-                    <input type="number" id="age" name="age" required min="5" max="110">
-                </div>
-                <div class="form-group">
-                    <label for="year">Рік Публікації</label>
-                    <input type="number" id="year" name="year" required min="1000" max="9999">
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Кількість</label>
-                    <input type="number" id="quantity" name="quantity" required min="1">
-                </div>
-                <div class="form-group">
-                    <label for="price">Ціна</label>
-                    <input type="number" id="price" name="price" required min="0" step="0.01">
+
+                <div>
+                    <label for="age">Вікова категорія</label>
+                    <input type="text" id="age" name="age" required>
                 </div>
 
-                <button type="submit" class="button">Додати Книгу</button>
-            </form>
+                <div>
+                    <label for="year">Рік видання</label>
+                    <input type="number" id="year" name="year" required>
+                </div>
+
+                <div>
+                    <label for="pages">Кількість сторінок</label>
+                    <input type="number" id="pages" name="pages" required>
+                </div>
+
+                <div>
+                    <label for="book_file">Файл книги</label>
+                    <input type="file" id="book_file" name="book_file" required>
+                </div>
+
+                <div>
+                    <label for="cover_image">Обкладинка</label>
+                    <input type="file" id="cover_image" name="cover_image" required>
+                </div>
+
+                <div>
+                    <label for="price">Ціна</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+                </div>
+
+                <button type="submit">Додати книгу</button> <!-- Додано закриття кнопки -->
+            </form> <!-- Додано закриття форми -->
         </main>
     </div>
 </body>
