@@ -127,7 +127,7 @@
             padding: 10px 15px;
             font-size: 1em;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 30px;
         }
 
         .edit-btn:hover {

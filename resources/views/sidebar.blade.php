@@ -75,4 +75,5 @@
             <li><a href="{{ route('saved.index') }}">Збережене</a></li>
             <li><a href="{{ route('profile.show') }}">Профіль</a></li>
         </ul>
+        <a href="{{ route('adminpanel') }}">adm</a>
     </div>
