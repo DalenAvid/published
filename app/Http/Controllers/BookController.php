@@ -178,5 +178,10 @@ public function savedBooks()
     
     return view('saved', compact('savedBooks'));
 }
+public function showReviews($id) {
+    $book = Book::findOrFail($id);
+    $reviews = $book->reviews; 
+    return view('book.reviews', compact('book', 'reviews'));
+}
 
 }

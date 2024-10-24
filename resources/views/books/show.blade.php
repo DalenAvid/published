@@ -65,7 +65,7 @@ p strong {
 
 </style>
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <h1>{{ $book->title }}</h1>
         <p><strong>Author:</strong> {{ $book->author }}</p>
         <p><strong>Rating:</strong> {{ $book->rating }}</p>
@@ -76,5 +76,18 @@ p strong {
         <p><strong>Comment:</strong> {{ $book->comment }}</p>
         <img src="{{ $book->cover_image_url }}" alt="{{ $book->title }}" class="img-fluid">
         <a href="{{ route('books.index') }}" class="btn btn-primary mt-3">Back to List</a>
+    </div> --}}
+    <div class="book-card">
+        <div class="book-content">
+            <img src="{{ $book->cover_image }}" alt="{{ $book->title }}">
+            <div class="book-info">
+                <h3>{{ $book->title }}</h3>
+                <p>Автор: {{ $book->author }}</p>
+                <p>Ціна: {{ $book->price }} грн</p>
+                <p>Опис: {{ $book->description }}</p>
+    
+                <a href="{{ route('book.reviews', $book->id) }}">Відгуки до книги →</a>
+            </div>
+        </div>
     </div>
 @endsection

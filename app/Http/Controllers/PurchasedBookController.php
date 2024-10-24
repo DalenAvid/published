@@ -12,6 +12,7 @@ class PurchasedBookController extends Controller
 {
     $user_id = Auth::id();
     $purchasedBooks = PurchasedBook::where('user_id', $user_id)->with('book')->get();
+    // dd($purchasedBooks);
     return view('our_books', compact('purchasedBooks'));
 }
     public function addPurchasedBooks(Request $request)
@@ -23,7 +24,6 @@ class PurchasedBookController extends Controller
         }
         $order = Order::create([
             'user_id' => Auth::id(),
-            // Додайте інші поля замовлення, якщо потрібно
         ]);
 
         foreach ($selected_books as $book) {
@@ -34,6 +34,7 @@ class PurchasedBookController extends Controller
             ]);
         }
         session()->forget('selected_books');
-        return redirect()->route('thanks_for_your_order');
+        // return redirect()->route('thanks_for_your_order');
+        return redirect()->route('user.books.index')->with('success', 'Книги успішно додані до вашої бібліотеки');
     }
 }
