@@ -7,11 +7,16 @@
     <title>Document</title>
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         display: flex;
+        font-family: "Montserrat Alternates", sans-serif;
+        font-weight: 300;
+        font-style: normal;
     }
 
     .sidebar {
@@ -210,7 +215,7 @@
         <h2>Меню</h2>
         @include('sidebar')
     </div>
-   
+
     <div class="content">
         <header class="header">
             <div class="header-title">Домівка</div>
