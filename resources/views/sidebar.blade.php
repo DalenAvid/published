@@ -15,35 +15,43 @@
         flex-direction: column;
         align-items: center;
     }
-
-    .sidebar h2 {
-        margin-top: 20px;
+.sidebar h2 {
+        margin-top: 10px;
+        text-align: center;
     }
 
     .sidebar ul {
         list-style-type: none;
         padding: 0;
         width: 100%;
-        margin-top: 250px;
-        margin-left: 140px;
+        padding-left: 140px;
     }
 
     .sidebar ul li {
         width: 100%;
+        border-bottom: 1px solid black;
+        position: relative;
     }
 
     .sidebar ul li a {
         display: block;
-        /* padding: 15px 20px; */
+        padding: 15px 0px;
         color: black;
         text-decoration: none;
         width: 100%;
     }
 
     .sidebar ul li a:hover {
-        background-color: #34495e;
+        color: brown;
     }
 
+    .sidebar ul li::before {
+        content: '>';
+        position: absolute;
+        right: 3px;
+        top: 15px;
+        color: black;
+    }
     .content {
         margin-left: 250px;
         padding: 20px;
@@ -51,13 +59,20 @@
     }
 </style>
 <div class="sidebar">
-    <h2></h2>
-    <ul>
-        <li><a href="/index">Домівка</a></li>
-        <li><a href="/library">Бібліотека</a></li>
-        <li><a href="#services">Ваші книги</a></li>
-        <li><a href="/downloadingTheBook">Завантаження книги</a></li>
-        <li><a href="/saved">Збережене</a></li>
-        <li><a href="/profile">Профіль</a></li>
-    </ul>
-</div>
+        <div class="profile-section">
+            <div class="profile-picture">
+                <img id="profileImage" src="{{ asset('images/default-avatar.png') }}" >
+                <h2>{{ Auth::user()->name }}</h2>
+            </div>
+        </div>
+        <h2>Меню</h2>
+        <ul>
+            <li><a href="{{ route('index') }}">Домівка</a></li>
+            <li><a href="{{ route('library') }}">Бібліотека</a></li>
+            <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
+            {{-- <li><a href="#services">Ваші книги</a></li> --}}
+            <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
+            <li><a href="{{ route('saved.index') }}">Збережене</a></li>
+            <li><a href="{{ route('profile.show') }}">Профіль</a></li>
+        </ul>
+    </div>

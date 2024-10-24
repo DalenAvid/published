@@ -48,7 +48,6 @@ class LibraryController extends Controller
     }
     public function preview(Request $request)
     {
-        
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -77,6 +76,12 @@ class LibraryController extends Controller
 
         return redirect()->route('preview.new');
     }
+    // public function index()
+    // {
+    //     $books = Book::all();
+        
+    //     return view('library.index', compact('books'));
+    // }
     public function library()
     {
         $bookData = session()->get('book_data');

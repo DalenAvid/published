@@ -71,7 +71,6 @@ class ProfileController extends Controller
             'address' => 'nullable|string|max:255',
              'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
     $user->name = $request->input('first_name') . ' ' . $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone') ?: $user->phone;

@@ -320,15 +320,7 @@ color: #666;
             </div>
         </div>
         <h2>Меню</h2>
-        <ul>
-            <li><a href="{{ route('index') }}">Домівка</a></li>
-            <li><a href="{{ route('library') }}">Бібліотека</a></li>
-            <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
-            {{-- <li><a href="#services">Ваші книги</a></li> --}}
-            <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
-            <li><a href="{{ route('saved.index') }}">Збережене</a></li>
-            <li><a href="{{ route('profile.show') }}">Профіль</a></li>
-        </ul>
+        @include('sidebar')
     </div>
 
     <div class="content">
@@ -346,7 +338,7 @@ color: #666;
            
         </header>
     </div>
-        <script>
+ <script>
         </script>
     </body>
 </html>

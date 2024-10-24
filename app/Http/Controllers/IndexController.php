@@ -32,5 +32,13 @@ class IndexController extends Controller
 
         return view('index', compact('books'));
     }
+    /**
+     * Display a listing of the resource.
+     */
+    // public function index()
+    // {
+    
+    //     return view('index');
+    // }
 
 }

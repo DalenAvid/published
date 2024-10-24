@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Адмін Панель</title>
-    
+    <title>Адмін Панель - Історія Замовлень</title>
 </head>
 
 <body>
@@ -79,7 +78,7 @@
         table,
         th,
         td {
-            border: 1px solid #fff;
+            border: 1px solid #ccc;
         }
 
         th,
@@ -93,7 +92,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #F6EEE8;
+            background-color: #fafafa;
         }
 
         tr:hover {
@@ -110,11 +109,10 @@
                 <li><a href="{{ route('adminpanel.adminaddbooks') }}">Додати Книгу</a></li>
                 <li><a href="{{ route('adminpanel.adminmoderationbooks') }}">Модернізація Книг</a></li>
             </ul>
-            <a href="{{ route('index') }}">Вийти</a>
         </aside>
 
         <main class="content">
-            <h1>Замовлення</h1>
+            <h1>Історія Замовлень</h1>
             <table>
                 <thead>
                     <tr>
@@ -209,7 +207,36 @@
                         <td>150 грн</td>
                         <td>-</td>
                     </tr>
-                    
+                    <tr>
+                        <td>009</td>
+                        <td>Сергій Мельник</td>
+                        <td>Україна</td>
+                        <td>Книга</td>
+                        <td>3</td>
+                        <td>Оплачено</td>
+                        <td>450 грн</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>010</td>
+                        <td>Катерина Василенко</td>
+                        <td>Україна</td>
+                        <td>Книга</td>
+                        <td>6</td>
+                        <td>Оплачено</td>
+                        <td>900 грн</td>
+                        <td>Швидка доставка</td>
+                    </tr>
+                    <tr>
+                        <td>011</td>
+                        <td>Михайло Бондаренко</td>
+                        <td>Україна</td>
+                        <td>Книга</td>
+                        <td>2</td>
+                        <td>Оплачено</td>
+                        <td>300 грн</td>
+                        <td>Знижка 5%</td>
+                    </tr>
                 </tbody>
             </table>
         </main>

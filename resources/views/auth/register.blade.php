@@ -126,6 +126,9 @@
             text-align: center;
             color:#994D31;
         }
+        input, button {
+            border-radius: 15px;
+        }
     </style>
 </head>
 <body>

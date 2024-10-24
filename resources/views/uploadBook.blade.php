@@ -53,6 +53,7 @@
             margin-bottom: 20px;
             margin-left: 70px;
         }
+
         .profile-info {
             text-align: center;
         }
@@ -70,6 +71,7 @@
             cursor: pointer;
             font-size: 14px;
         }
+
         .profile-info .button1:hover {
             background-color: #2980b9;
         }
@@ -83,9 +85,10 @@
             width: 100%;
             padding-left: 140px;
         }
+
         .sidebar ul li {
             width: 100%;
-            border-bottom: 1px solid black; 
+            border-bottom: 1px solid black;
             position: relative;
         }
         .sidebar ul li a {
@@ -95,8 +98,9 @@
             text-decoration: none;
             width: 100%;
         }
+
         .sidebar ul li::before {
-            content: '>'; 
+            content: '>';
             position: absolute;
             right: 3px;
             top: 15px;
@@ -240,6 +244,7 @@
         <div class="profile-section">
             <div class="profile-picture">
                 <img id="profileImage" src="{{ asset('images/default-avatar.png') }}" >
+
                 <h2>{{ Auth::user()->name }}</h2>
             </div>
         </div>
@@ -314,4 +319,3 @@
     </div>
 </body> 
 </html>
-

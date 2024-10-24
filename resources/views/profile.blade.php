@@ -161,7 +161,7 @@
 
         .grey-rectangle {
             width: 100%;
-            height: 200px;
+            height: 150px;
             background-image: url('images/prof.jpg');
             margin-top: 10px;
             margin-bottom: 25px;
@@ -169,15 +169,15 @@
 
         .container {
             display: flex;
-            margin-top:-20px;
+            justify-content: space-between;
             padding: 20px;
         }
 
         .card {
             background-color: #fff;
-    width: 34%;
+    width: 18%;
     padding: 10px;
-    margin-top:-20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -307,6 +307,7 @@
                         </div>
                     </div>
                    
+
                 </div>
             </div>
             
@@ -338,7 +339,6 @@
         const defaultAvatar = "{{ asset('images/default-avatar.png') }}";
         document.getElementById("profileImage").setAttribute("src", defaultAvatar);
         });  
-
 </script>
 
 </body>
