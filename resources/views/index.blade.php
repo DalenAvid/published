@@ -10,23 +10,11 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
     body {
+
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         display: flex;
-        font-family: "Montserrat Alternates", sans-serif;
-        font-weight: 300;
-        font-style: normal;
-    }
-
-    .sidebar {
-        width: 250px;
-        color: white;
-        height: 100vh;
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .profile-section {
@@ -90,47 +78,52 @@
         background-color: #2980b9;
     }
 
-    .sidebar h2 {
-        margin-top: 10px;
+    
+
+    .featured-books {
+        display: flex;
+        justify-content: flex-start;
+        margin: 30px 0;
+        padding: 10px;
+        margin-left: 200px;
+        gap: 50px;
+    }
+
+    .book-card {
+        background-color: #DACFC3;
+        padding: 10px;
+        width: 40%;
+        box-sizing: border-box;
+    }
+
+    .book-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .book-content img {
+        width: 100px;
+        height: 160px;
+        margin: 0 20px;
+    }
+
+    .book-info {
         text-align: center;
     }
 
-    .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-        width: 100%;
-        padding-left: 140px;
+    .book-info h3 {
+        font-size: 16px;
+        margin: 10px 0 5px 0;
     }
 
-    .sidebar ul li {
-        width: 100%;
-        border-bottom: 1px solid black;
-        position: relative;
+    .book-info p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
     }
-
-    .sidebar ul li a {
-        display: block;
-        padding: 15px 0px;
-        color: black;
-        text-decoration: none;
-        width: 100%;
-    }
-
-    .sidebar ul li a:hover {
-        color: brown;
-    }
-
-    .sidebar ul li::before {
-        content: '>';
-        position: absolute;
-        right: 3px;
-        top: 15px;
-        color: black;
-    }
-
 
     .content {
-        margin-left: 200px;
+        margin-left: 190px;
         padding: 20px;
         flex-grow: 1;
     }
@@ -156,108 +149,342 @@
     }
 
     .header-search input {
-        padding: 5px 10px;
+        padding: 10px;
         font-size: 16px;
-        border: none;
-        border-radius: 3px;
+        border: 1px solid #8B4D31;
+        border-radius: 20px;
+        width: 200px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .header-search input:focus {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        outline: none;
     }
 
     .container {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 30px;
+        margin-left: 160px;
     }
 
     .card {
-        background-color: #ccc;
-        width: 18%;
+        display: flex;
+        align-items: center;
         padding: 10px;
-        box-sizing: border-box;
         border-radius: 5px;
-        position: relative;
     }
 
     .card img {
-        width: 100%;
+        width: 120px;
+        height: 180px;
+        object-fit: cover;
         border-radius: 5px;
+        margin-right: 20px;
     }
 
-    .rating {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 5px;
-        border-radius: 3px;
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .title {
-        margin-top: 10px;
         font-size: 16px;
         font-weight: bold;
+        margin-bottom: 5px;
     }
 
     .author {
         font-size: 14px;
         color: #555;
     }
+
+    .buy {
+        background-color: #8F5E48;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .carousel {
+        display: flex;
+        align-items: center;
+        margin-left: 230px;
+        position: relative;
+    }
+
+    .carousel-container {
+        overflow: hidden;
+        max-width: 820px;
+        position: relative;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        will-change: transform;
+    }
+
+    .carousel-item {
+        flex: 0 0 240px;
+        margin-right: 40px;
+    }
+
+    .carousel-item img {
+        width: 140px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .carousel-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .prev,
+    .next {
+        background-color: #8F5E48;
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 10px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        transition: background-color 0.3s ease, opacity 0.3s ease;
+    }
+
+    .prev {
+        left: -60px;
+    }
+
+    .next {
+        right: 320px;
+    }
+
+    .prev.disabled,
+    .next.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    .rating {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #5a3e2b;
+    }
 </style>
 
 <body>
     <div class="sidebar">
-        <div class="profile-section">
-            <div class="profile-picture">
-                <img id="profileImage" src="{{ asset('images/default-avatar.png') }}">
-                <h2>{{ Auth::user()->name }}</h2>
-            </div>
-        </div>
-        <h2>Меню</h2>
-        @include('sidebar')
+
+
+        <aside>
+            @include('sidebar')  <!-- Подключаем боковое меню -->
+        </aside>
     </div>
 
     <div class="content">
         <header class="header">
             <div class="header-title">Домівка</div>
-            <div class="header-search">
-                <input type="text" placeholder="Пошук...">
+            <div class="header-search" style="position: relative;">
+                <input id="search-input" type="text" placeholder="Шукати за назвою, жанром або автором"
+                    style="padding-right: 40px;">
+                <button id="search-button"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: transparent; cursor: pointer;">
+                    <img src="icons/search.jpg" alt="" style="width: 20px; height: 20px;">
+                </button>
             </div>
         </header>
-        <div class="content">
-            <div class="container">
-                <div class="card">
-                    <div class="rating">4.5</div>
-                    <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                    <div class="title">Назва книги 1</div>
-                    <div class="author">Автор книги 1</div>
+        <h2 style="margin-left: 220px;  margin-top:-10px;">Для Вас</h2>
+        <div class="featured-books" id="featured-books">
+            @foreach($books->take(2) as $book) 
+                <div class="book-card">
+                    <div class="book-content">
+                        <img src="{{ $book->cover_image }}" alt="{{ $book->title }}">
+                        <div class="book-info">
+                            <h3>{{ $book->title }}</h3>
+                            <p>{{ $book->author ?? 'Автор невідомий' }}</p>
+                            <p> ⭐⭐⭐⭐⭐</p>
+                            <p>{{ $book->genre }}</p>
+                            <button class="buy"
+                                onclick="window.location.href='{{ route('more_detail', ['id' => $book->id]) }}'">Придбати</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="rating">4.7</div>
-                    <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                    <div class="title">Назва книги 2</div>
-                    <div class="author">Автор книги 2</div>
+            @endforeach
+        </div>
+        <h2 style="margin-left: 220px; margin-top:-10px;">Вибране</h2>
+        <div class="carousel">
+            <button class="prev">&#8249;</button>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    @foreach($books as $book)
+                        <div class="carousel-item" data-url="{{ route('more_detail', ['id' => $book->id]) }}">
+                            <img src="{{ $book->cover_image }}" alt="Обложка книги">
+                            <div class="carousel-content">
+                                <div class="title">{{ $book->title }}</div>
+                                <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
+                                <div class="genre" style="display: none;">{{ $book->genre ?? 'Невідомий жанр' }}</div>
+                                <p> ⭐⭐⭐⭐⭐</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="card">
-                    <div class="rating">4.8</div>
-                    <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                    <div class="title">Назва книги 3</div>
-                    <div class="author">Автор книги 3</div>
-                </div>
-                <div class="card">
-                    <div class="rating">4.9</div>
-                    <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                    <div class="title">Назва книги 4</div>
-                    <div class="author">Автор книги 4</div>
-                </div>
-                <div class="card">
-                    <div class="rating">5.0</div>
-                    <img src="https://via.placeholder.com/150" alt="Обложка книги">
-                    <div class="title">Назва книги 5</div>
-                    <div class="author">Автор книги 5</div>
+            </div>
+            <button class="next">&#8250;</button>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+
+    let currentIndex = 0;
+    const itemsToShow = 3;
+    const itemWidth = 280;
+
+    function updateButtons() {
+        const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+        if (currentIndex === 0) {
+            prevButton.classList.add('disabled');
+        } else {
+            prevButton.classList.remove('disabled');
+        }
+
+        if (currentIndex >= visibleItems.length - itemsToShow) {
+            nextButton.classList.add('disabled');
+        } else {
+            nextButton.classList.remove('disabled');
+        }
+    }
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            updateButtons();
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < items.length - itemsToShow) {
+            currentIndex++;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            updateButtons();
+        }
+    });
+
+    updateButtons();
+
+    function selectBook(coverImage, title, author, genre, bookUrl) {
+        const featuredBooks = document.getElementById('featured-books');
+        featuredBooks.innerHTML = '';
+
+        featuredBooks.innerHTML = `
+        <div class="book-card">
+            <div class="book-content">
+                <img src="${coverImage}" alt="${title}">
+                <div class="book-info">
+                    <h3>${title}</h3>
+                    <p>${author}</p>
+                    <p> ⭐⭐⭐⭐⭐</p>
+                    <p>${genre}</p>
+                    <button class="buy" onclick="window.location.href='${bookUrl}'">Придбати</button>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    `;
+    }
+
+    document.querySelectorAll('.carousel-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const coverImage = this.querySelector('img').src;
+            const title = this.querySelector('.title').textContent;
+            const author = this.querySelector('.author').textContent;
+            const genre = this.querySelector('.genre') ? this.querySelector('.genre').textContent : '';
+            const bookUrl = this.getAttribute('data-url');
+            selectBook(coverImage, title, author, genre, bookUrl);
+        });
+    });
+
+    document.getElementById('search-button').addEventListener('click', filterBooks);
+    document.getElementById('search-input').addEventListener('input', filterBooks);
+
+    function filterBooks() {
+        const query = document.getElementById('search-input').value.toLowerCase();
+
+        const carouselItems = document.querySelectorAll('.carousel-item');
+
+        carouselItems.forEach(item => {
+            const title = item.querySelector('.title').textContent.toLowerCase();
+            const author = item.querySelector('.author').textContent.toLowerCase();
+            const genre = item.querySelector('.genre') ? item.querySelector('.genre').textContent.toLowerCase() : '';
+
+            if (title.includes(query) || author.includes(query) || genre.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        document.getElementById('featured-books').innerHTML = '';
+        updateCarouselWidth();
+    }
+
+    function updateCarouselWidth() {
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const track = document.querySelector('.carousel-track');
+
+        let visibleItems = 0;
+        carouselItems.forEach(item => {
+            if (item.style.display !== 'none') {
+                visibleItems++;
+            }
+        });
+
+        const totalWidth = visibleItems * itemWidth;
+        track.style.width = `${totalWidth}px`;
+        currentIndex = 0;
+        track.style.transform = `translateX(0)`;
+        updateButtons();
+    }
+
+    updateCarouselWidth();
+    window.onload = function () {
+        const book = {
+            title: "{{ $book['title'] }}",
+            author: "{{ $book['author'] }}",
+            price: "{{ $book['price'] }}",
+            cover_image: "{{ $book['cover_image'] }}"
+        };
+        localStorage.setItem('book', JSON.stringify(book));
+    };
+    window.onload = function () {
+        const savedBook = JSON.parse(localStorage.getItem('book'));
+        if (savedBook) {
+            document.querySelector('.item-title').textContent = savedBook.title;
+            document.querySelector('.item-author').textContent = savedBook.author;
+            document.querySelector('.item-price').textContent = savedBook.price + ' грн';
+            document.querySelector('.item img').src = savedBook.cover_image;
+        }
+    }
+</script>
 
 </html>

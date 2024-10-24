@@ -38,29 +38,6 @@ class ProfileController extends Controller
 
     public function uploadPhoto(Request $request)
     {
-        // $request->validate([
-        //     'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        // ]);
-
-        // $user = Auth::user();
-
-        // if ($request->has('delete')) {
-        //     $user->photo = null; 
-        //     $user->save();
-        //     return response()->json(['success' => true]);
-        // }
-        // if ($request->hasFile('photo')) {
-        //     $file = $request->file('photo');
-        //     $filename = time() . '.' . $file->getClientOriginalExtension(); 
-        //     $file->move(public_path('profile_photos'), $filename); 
-
-        //     $user->photo = 'profile_photos/' . $filename; 
-        //     $user->save();
-    
-        //     return response()->json(['success' => true, 'photo' => $user->photo]);
-        // }
-   
-        // return response()->json(['success' => false]);
         if ($request->hasFile('photo')) {
             $user = Auth::user();
             $file = $request->file('photo');
@@ -94,13 +71,7 @@ class ProfileController extends Controller
             'address' => 'nullable|string|max:255',
              'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        //  $fullName = $request->input('first_name') . ' ' . $request->input('last_name');
-        //  $user->name = $fullName;
-
     $user->name = $request->input('first_name') . ' ' . $request->input('last_name');
-       // $user->first_name = $request->input('first_name');
-       // $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone') ?: $user->phone;
         $user->address = $request->input('address');

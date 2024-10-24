@@ -63,9 +63,10 @@
 <div class="sidebar">
     <div class="profile-section">
         <div class="profile-picture">
-            <img id="profileImage" src="{{ asset('images/default-avatar.png') }}">
+            <img style="width: 100px; height: 100px; margin-right: -50px;"  id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png">
             <h2>{{ Auth::user()->name }}</h2>
         </div>
+
     </div>
     <h2>Меню</h2>
     <ul>
@@ -79,3 +80,4 @@
     </ul>
     <a href="{{ route('adminpanel') }}">adm</a>
 </div>
+

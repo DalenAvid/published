@@ -13,6 +13,11 @@ use App\Http\Controllers\UploadBookController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserBooksController;
 use App\Http\Controllers\SavedController;
+
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PurchasedBookController;
 use App\Http\Controllers\AdminpanelController;
 use App\Http\Controllers\PurchaseCompletedController;
 use App\Http\Controllers\ThanksForOrderController;
@@ -26,11 +31,6 @@ use App\Http\Controllers\AdminAddBookController;
 use App\Http\Controllers\AdminBooksController;
 use App\Http\Controllers\AdminModerationBooksController;
 use App\Http\Controllers\AdminOrderHistoryController;
-
-
-
-
-
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
@@ -66,15 +66,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile/upload', [ProfileController::class, 'uploadPhoto'])->name('profile.uploadPhoto');
     Route::get('/index', [IndexController::class, 'index'])->name('index');
-    // Route::get('/library', [LibraryController::class, 'library'])->name('library');
-    // Route::get('/library/index', [LibraryController::class, 'index'])->name('library.index');
-    // Route::get('/upload', [UploadBookController::class, 'create'])->name('book.upload');
-    // Route::get('/library', [UploadBookController::class, 'showLibrary'])->name('library');
-    // Route::put('/book/store', [BookController::class, 'store'])->name('book.store');
-    Route::post('/profile/uploadPhoto', [ProfileController::class, 'uploadPhoto'])->name('profile.uploadPhoto');
 
-// Route::post('/upload', [UploadBookController::class, 'store'])->name('book.store');
-// Route::post('/upload-book', [UploadBookController::class, 'store'])->name('book.store');
+    Route::post('/profile/uploadPhoto', [ProfileController::class, 'uploadPhoto'])->name('profile.uploadPhoto');
 Route::post('/books', [BooksController::class, 'store'])->name('books.store');
 Route::middleware('auth')->group(function () {
     Route::get('/library', [LibraryController::class, 'index'])->name('library');
@@ -93,6 +86,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload-book', [UploadBookController::class, 'store'])->name('book.store');
    
 });
+Route::get('/featured-books', [BookController::class, 'featuredBooks'])->name('books.featured');
+Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
+Route::middleware('auth')->group(function () {
+    Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
+    Route::get('/library', [BookController::class, 'index'])->name('library');
+Route::get('/more_detail', [BookController::class, 'showMoreDetail'])->name('more_detail');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('more_detail');
+Route::post('/books/store', [BookController::class, 'store'])->name('book.store');
+
+});
+Route::resource('user/books', UserBooksController::class);
 Route::middleware('auth')->group(function () {
     Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
     Route::get('/library', [BookController::class, 'index'])->name('library');
@@ -105,46 +109,56 @@ Route::get('/saved', function () {
     return view('saved');
 })->name('saved');
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user/books', [PurchasedBookController::class, 'index'])->name('user.books.index');
+    Route::post('/purchased-books/add', [PurchasedBookController::class, 'addPurchasedBooks'])->name('purchased.books.add');
+});
 Route::get('/saved1', function () {
     return view('saved1');
 })->name('saved1');
-// Route::post('/upload/preview', [UploadBookController::class, 'preview'])->name('book.preview');
-// Route::get('/book/preview/new', [UploadBookController::class, 'showPreviewPage'])->name('preview.new');
-// Route::get('/library', [UploadBookController::class, 'showLibrary'])->name('library');
-// Route::put('/preview', [UploadBookController::class, 'preview'])->name('book.preview');
-// Route::get('/preview', [LibraryController::class, 'preview'])->name('book.preview');
-// Route::get('/library', [LibraryController::class, 'library'])->name('library');
-// Route::post('/book/store', [UploadBookController::class, 'store'])->name('book.store');
-// Route::get('/book/preview', [LibraryController::class, 'preview'])->name('book.preview');
-    // Route::post('/book/preview', [UploadBookController::class, 'preview'])->name('book.preview');
-    // Route::get('/book/preview', [UploadBookController::class, 'showPreviewPage'])->name('preview.new');
-    // Route::post('/books/store', [LibraryController::class, 'store'])->name('book.store');
+Route::get('/payments', [CheckoutController::class, 'show'])->name('payments');
 
-    // Route::post('/book/preview', [UploadBookController::class, 'preview'])->name('book.preview');
 
-    // Route::post('/book/preview', [UploadBookController::class, 'showPreview'])->name('preview.page');
-    // Route::get('/book/preview', [UploadBookController::class, 'showPreview'])->name('preview.page');
-// Route::get('/book/preview-new', function () {
-//     return view('preview');
-// })->name('preview.new');
-    // Route::get('/book/preview-new', [UploadBookController::class, 'previewPage'])->name('preview.new');
-    // Route::post('/book/download', [UploadBookController::class, 'download'])->name('book.download');
-    // Route::post('/library', [UploadBookController::class, 'libr'])->name('library.store'); 
-    
+    Route::post('/book', [BookController::class, 'store'])->name('book.store');
+
      Route::get('/upload', [UploadBookController::class, 'create'])->name('book.upload');
      Route::post('/upload', [UploadBookController::class, 'store'])->name('book.store');
-    // Route::get('/book/preview', [UploadBookController::class, 'showPreviewPage'])->name('book.preview.page');
-    // Route::get('/library', [LibraryController::class, 'index'])->name('library');
-
-    // Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
     Route::get('/saved', [SavedController::class, 'index'])->name('saved.index');
-    // Route::post('/book/download', [UploadBookController::class, 'download'])->name('book.download');
 });
-// Route::get('/library', [LibraryController::class, 'index'])->name('library');
 
-// Route::get('/library', function () {
-//     return view('library'); 
-// });
+Route::get('/books', [BookController::class, 'index1'])->name('books.index');
+Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::get('/books/{id}', [BookController::class, 'show1'])->name('books.show');
+Route::post('/cart/add/{id}', [BookController::class, 'addToCart'])->name('cart.add');
+Route::get('/payments', action: [CheckoutController::class, 'show'])->name('payments');
+Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::get('/payments', [BookController::class, 'viewCart'])->name('payments');
+Route::get('/page1/add/{id}', [BookController::class, 'addBookToPage1'])->name('page1.add');
+Route::get('/page1/remove/{id}', [BookController::class, 'removeBookFromPage1'])->name('page1.remove');
+ Route::get('/page1/{id}', [BookController::class, 'addBookToPage1'])->name('page1');
+ Route::get('/page1', [BookController::class, 'showPage1'])->name('page1');
+ Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+ Route::get('/thanks_for_your_order', [OrderController::class, 'showThanks'])->name('thanks_for_your_order');
+Route::get('/checkout', [OrderController::class, 'showCheckout'])->name('checkout.show');
+
+// Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/thanks-for-your-order', [CheckoutController::class, 'thanksForYourOrder'])->name('thanks_for_your_order');
+
+Route::post('/book/save/{id}', [BookController::class, 'saveBook'])->name('book.save');
+
+Route::get('/saved', [BookController::class, 'savedBooks'])->name('saved.index');
+
+Route::get('/saved1', function () {
+    return view('saved1');
+})->name('saved1');
+
+     Route::get('/upload', [UploadBookController::class, 'create'])->name('book.upload');
+     Route::post('/upload', [UploadBookController::class, 'store'])->name('book.store');
+    Route::get('/saved', [SavedController::class, 'index'])->name('saved.index');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.modify');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
@@ -194,6 +208,12 @@ Route::get('/reports/review-published', [ReviewPublishedController::class, 'inde
 
 
 Route::get('/adminpanel/adminaddbooks', [AdminAddBookController::class, 'index'])->name('adminpanel.adminaddbooks');
+//Create 
+
+
+Route::get('/adminpanel/adminaddbook', [AdminAddBookController::class, 'create'])->name('adminaddbook.create');
+Route::post('/adminpanel/adminaddbook', [AdminAddBookController::class, 'store'])->name('adminaddbook.store');
+//books
 Route::get('/adminpanel/adminbooks', [AdminBooksController::class, 'index'])->name('adminpanel.adminbooks');
 Route::get('/adminpanel/adminmoderationbooks', [AdminModerationBooksController::class, 'index'])->name('adminpanel.adminmoderationbooks');
 Route::get('/adminpanel/adminorderhistory', [AdminOrderHistoryController::class, 'index'])->name('adminpanel.adminorderhistory');

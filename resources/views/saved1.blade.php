@@ -15,15 +15,7 @@
     display: flex;
 }
 
-.sidebar {
-    width: 250px;
-    color: white;
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
     .profile-section {
         display: flex;
         flex-direction: column;
@@ -83,38 +75,7 @@
         background-color: #2980b9;
     }
 
-    .sidebar h2 {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-        width: 100%;
-        padding-left:140px;
-    }
-
-    .sidebar ul li {
-        width: 100%;
-        border-bottom: 1px solid black; 
-        position: relative;
-    }
-
-    .sidebar ul li a {
-        display: block;
-        padding: 15px 0px;
-        color: black;
-        text-decoration: none;
-        width: 100%;
-    }
-    .sidebar ul li::before {
-    content: '>'; 
-    position: absolute;
-    right: 3px;
-    top:15px;
-    color: black;
-}
+    
     .content {
         margin-left: 250px;
         padding: 20px;
@@ -274,16 +235,46 @@ color: #666;
 .button1:hover {
     background-color: #6F4C3E; 
 }
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 30px;
+    margin-left: 160px;
+}
 
+.card {
+    display: flex;
+    align-items: center; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card img {
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.author {
+    font-size: 14px;
+    color: #555;
+}
 </style>
 <body>
-    <div class="sidebar">
-        <div class="profile-section">
-            <div class="profile-picture">
-                <img id="profileImage" src="{{ asset('images/default-avatar.png') }}" >
-                <h2>{{ Auth::user()->name }}</h2>
-            </div>
-        </div>
+    <div >
+        
         <h2>Меню</h2>
         @include('sidebar')
     </div>
@@ -295,21 +286,15 @@ color: #666;
                 </div>
                 <div class="title">
                     знову його приховати.</div>
-            {{-- <div class="header-search">
-                <input type="text" placeholder="Пошук...">
-            </div> --}}
             <div class="button-container">
-                <button class="button1">Приховати</button>
+                <form action="{{ route('saved.index') }}" method="GET">
+                    <button type="submit" class="button1">Приховати</button>
+                </form>
             </div>
            
         </header>
     </div>
-    
-    {{-- <div class="button-container">
-        <button class="button">Читати останню книгу</button>
-        <button class="button">Слухати останню книгу</button>
-    </div> --}}
-        <script>
+ <script>
         </script>
     </body>
 </html>
