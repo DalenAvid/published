@@ -78,7 +78,7 @@
         background-color: #2980b9;
     }
 
-    
+
 
     .featured-books {
         display: flex;
@@ -220,9 +220,11 @@
         margin-left: 230px;
         position: relative;
     }
-.next {
-    right: 260px; 
-}
+
+    .next {
+        right: 260px;
+    }
+
     .carousel-track {
         display: flex;
         transition: transform 0.5s ease;
@@ -232,6 +234,7 @@
     .carousel-item {
         flex: 0 0 240px;
         margin-right: 40px;
+        transition: transform 0.5s ease;
     }
 
     .carousel-item img {
@@ -239,6 +242,18 @@
         height: 200px;
         object-fit: cover;
         border-radius: 5px;
+    }
+
+    .carousel-item:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s ease;
+        
+        cursor: pointer;
+        z-index: 1;
+        position: relative;
+        
+        margin-bottom: 40px;
+
     }
 
     .carousel-content {

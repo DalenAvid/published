@@ -1,84 +1,118 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
     }
 
     .sidebar {
-        margin-left:-62px;
-        width: 250px;
-        color: white;
-        height: 100vh;
-        position: fixed;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
+        height: 100vh;
+        background-color: #fff;
+        /* Фон для прикладу */
+        padding-top: 20px;
     }
 
-    .sidebar h2 {
-        margin-top: 10px;
-        text-align: center;
+    .profile-section {
+        text-align: left;
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 20px 0;
+        background-color: #fff;
+        /* Додано фон для секції профілю */
+        
+        /* Нижня границя для розділення секції */
     }
 
-    .sidebar ul {
+    .profile-picture {
+        margin-bottom: 10px;
+        /* Відступ знизу між зображенням і текстом */
+    }
+
+    .profile-picture img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        /* Кругла форма аватарки */
+        object-fit: cover;
+        /* Обрізає зображення під круг */
+    }
+
+    .profile-section h2 {
+        font-size: 18px;
+        margin: 0;
+        color: #555;
+        /* Сірий колір для імені */
+    }
+
+    .sidebar-menu {
         list-style-type: none;
         padding: 0;
+        margin: 0;
         width: 100%;
-        padding-left: 140px;
+        text-align: left;
     }
 
-    .sidebar ul li {
-        width: 100%;
-        border-bottom: 1px solid black;
+    .menu-item {
+        font-size: 18px;
+        color: #888;
+        padding: 15px 0;
+        width: 300px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: left;
         position: relative;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+        transition: all 0.3s ease;
+        margin: 0 auto;
     }
 
-    .sidebar ul li a {
-        display: block;
-        padding: 15px 0px;
-        color: black;
+    a {
         text-decoration: none;
-        width: 100%;
-    }
-
-    .sidebar ul li a:hover {
-        color: brown;
-    }
-
-    .sidebar ul li::before {
-        content: '>';
-        position: absolute;
-        right: 3px;
-        top: 15px;
-        color: black;
-    }
-
-    .content {
-        margin-left: 250px;
-        padding: 20px;
+        color: #888;
+        transition: color 0.3s ease;
         flex-grow: 1;
     }
+
+    .menu-item:hover {
+        color: #8b4513;
+        border-bottom-color: #8b4513;
+    }
+
+    .menu-item:hover a {
+        color: #8b4513;
+    }
+
+    .arrow {
+        font-size: 18px;
+        color: #888;
+        transition: color 0.3s ease;
+        position: absolute;
+        right: 0;
+    }
+
+    .menu-item:hover .arrow {
+        color: #8b4513;
+    }
 </style>
+
 <div class="sidebar">
     <div class="profile-section">
         <div class="profile-picture">
-            <img style="width: 100px; height: 100px; margin-right: -50px;"  id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png">
-            <h2>{{ Auth::user()->name }}</h2>
+            <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png" alt="Profile Picture">
         </div>
-
+        <h2>{{ Auth::user()->name }}</h2>
     </div>
     <h2>Меню</h2>
-    <ul>
-        <li><a href="{{ route('index') }}">Домівка</a></li>
-        <li><a href="{{ route('library') }}">Бібліотека</a></li>
-        <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
-        {{-- <li><a href="#services">Ваші книги</a></li> --}}
-        <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
-        <li><a href="{{ route('saved.index') }}">Збережене</a></li>
-        <li><a href="{{ route('profile.show') }}">Профіль</a></li>
+    <ul class="sidebar-menu">
+        <li class="menu-item"><a href="{{ route('index') }}">Домівка</a><span class="arrow">></span></li>
+        <li class="menu-item"><a href="{{ route('library') }}">Бібліотека</a><span class="arrow">></span></li>
+        <li class="menu-item"><a href="{{ route('user.books.index') }}">Ваші книги</a><span class="arrow">></span></li>
+        <li class="menu-item"><a href="{{ route('book.upload') }}">Завантажити книгу</a><span class="arrow">></span></li>
+        <li class="menu-item"><a href="{{ route('saved.index') }}">Збережене</a><span class="arrow">></span></li>
+        <li class="menu-item"><a href="{{ route('profile.show') }}">Профіль</a><span class="arrow">></span></li>
     </ul>
     <a href="{{ route('adminpanel') }}">adm</a>
 </div>
-
