@@ -127,7 +127,10 @@
                     <label for="title">Назва книги:</label>
                     <input type="text" id="title" name="title" value="{{ old('title') }}" required>
                 </div>
-
+                <div>
+                    <label for="author">Автор:</label>
+                    <input type="text" id="author" name="author" value="{{ old('author') }}" required>
+                </div>
                 <div>
                     <label for="description">Опис книги:</label>
                     <textarea id="description" name="description" required>{{ old('description') }}</textarea>

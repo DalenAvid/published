@@ -142,9 +142,6 @@
     <div class="content">
         <header class="header">
             <div class="header-title">Ваші книги</div>
-            <div class="header-search">
-                <input type="text" placeholder="Шукати">
-            </div>
             <div class="button-container">
                 <button class="button1">Читати останню книгу</button>
                 <button class="button2">Слухати останню книгу</button>
@@ -152,7 +149,7 @@
         </header>
 
         <div class="container">
-            <h2>Ваші книги</h2>
+            {{-- <h2>Ваші книги</h2> --}}
             @if($purchasedBooks->isEmpty())
                 <p>У вас немає куплених книг.</p>
             @else
