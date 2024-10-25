@@ -274,7 +274,8 @@
 
                     <div class="stats">
                         <div>
-                            <h4>42</h4>
+                            {{-- <h4 id="readCount">{{ $totalReadCount }}</h4> --}}
+                            <h4>1</h4>
                             <p>прочитано</p>
                         </div>
                         <div>
@@ -293,11 +294,25 @@
 
                 <div class="tabs">
                     <a href="{{ route('profile.show') }}" class="btn btn-light">Опубліковані книги</a>
-                    <button class="btn btn-light">Запитання та відповіді</button>
-                    <button class="btn btn-light">Ваші відгуки</button>
+                    {{-- <button class="btn btn-light">Запитання та відповіді</button>
+                    <button class="btn btn-light">Ваші відгуки</button> --}}
                 </div>
-
                 {{-- <div class="content">
+                    <div class="container">
+                        @foreach($books as $book)
+                            <div class="card">
+                                <div class="image-container">
+                                    <img src="{{ $book->cover_image ?? asset('icons/default-book.png') }}" alt="Обкладинка книги">
+                                </div>
+                                <div class="info-container">
+                                    <div class="title">{{ $book->title }}</div>
+                                    <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div> --}}
+                <div class="content">
                     <div class="container">
                         <div class="content">
                             <div class="container">
@@ -307,7 +322,7 @@
                                     </div>
                                     <div class="info-container">
                                         <div class="title">Дім у сотнях місць</div>
-                                        <div class="author">Аліна Вернадська</div>
+                                        {{-- <div class="author">Аліна Вернадська</div> --}}
                                     </div>
                                 </div>
                                 <div class="card">
@@ -316,7 +331,7 @@
                                     </div>
                                     <div class="info-container">
                                         <div class="title">Грати</div>
-                                        <div class="author">Аліна Вернадська</div>
+                                        {{-- <div class="author">Аліна Вернадська</div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -324,8 +339,8 @@
 
 
                     </div>
-                </div> --}}
-                <div class="content">
+                </div>
+                {{-- <div class="content">
                     <div class="container">
                         <div class="content">
                             <div class="container">
@@ -343,7 +358,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 
             </div>
         </div>

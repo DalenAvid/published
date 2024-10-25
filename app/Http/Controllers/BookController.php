@@ -21,7 +21,13 @@ class BookController extends Controller
         $book = Book::findOrFail($id); 
         return view('more_detail', compact('book'));
     }
-    
+    public function showProfile()
+{
+    $user = Auth::user();
+    $books = Book::where('author', $user->name)->get(); 
+
+    return view('profile', compact('user', 'books')); 
+}
     public function addToCart(Request $request, $id)
 {
     $book = Book::findOrFail($id);
@@ -90,7 +96,11 @@ public function saveBook(Request $request, $id)
 
     return redirect()->back()->with('success', 'Книга збережена!');
 }
-
+public function viewPdf($id)
+{
+    $book = Book::findOrFail($id);
+    return view('books.view_pdf', ['book' => $book]);
+}
 public function removeBookFromPage1($id)
 {
     $selected_books = session()->get('selected_books', []);

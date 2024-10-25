@@ -54,9 +54,14 @@ Route::middleware('guest')->group(function () {
 Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('login.provider');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('login.provider.callback');
 
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
+
 Route::get('/index', [IndexController::class, 'index'])->name('index');
 Route::resource('books', BooksController::class);
 Route::get('/profile', [ProfileController::class, 'showUserBooks'])->name('profile.show');
+
+Route::get('/book/{id}/view', [BookController::class, 'viewPdf'])->name('book.view');
+Route::post('/books/{id}/increment-read-count', [BooksController::class, 'incrementReadCount'])->name('books.incrementReadCount');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

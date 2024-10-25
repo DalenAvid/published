@@ -96,7 +96,17 @@
         <div class="book-content">
             <img src="{{ $book->cover_image }}" alt="{{ $book->title }}">
             <div class="book-info">
-                <h3>{{ $book->title }}</h3>
+                {{-- <img src="{{ asset('icons/save.jpg') }}" alt="Save" style="margin-top:20px; margin-right:10px;width: 30px; height: 30px; cursor: pointer;"> --}}
+
+                <div class="title-container" style="display: flex; align-items: center; justify-content: space-between;">
+                    <h3>{{ $book->title }}</h3>
+                    {{-- <form action="{{ route('book.save', ['id' => $book->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit" style="background: none; border: none;">
+                            <img src="{{ asset('icons/save.jpg') }}" alt="Save" style="width: 30px; height: 30px; cursor: pointer;">
+                        </button>
+                    </form> --}}
+                </div>
                 <p>Автор: {{ $book->author }}</p>
                 <p>Ціна: {{ $book->price }} грн</p>
                 <button class="buy"
@@ -122,5 +132,4 @@
         </div>
     </div>
 </body>
-
 </html>

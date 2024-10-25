@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Book;
 class ProfileController extends Controller
 {
     public function show()
@@ -27,6 +27,9 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = auth()->user(); 
+        $nameParts = explode(' ', $user->name);
+        $user->first_name = $nameParts[0] ?? '';
+        $user->last_name = $nameParts[1] ?? '';
         return view('modify', compact('user'));
     }
 
@@ -58,7 +61,21 @@ class ProfileController extends Controller
     
         return response()->json(['success' => false]);
     }
+//     public function showProfile1()
+// {
+//     $totalReadCount = Book::sum('read_count');
+//     $user = Auth::user();
+//     return view('profile', compact('totalReadCount', 'user'));
+// }
 
+    public function showProfile()
+    {
+        $user = Auth::user();
+        $books = Book::where('author', $user->name)->get(); 
+        $totalReadCount = Book::sum('read_count');
+
+    return view('profile', compact('user', 'books', 'totalReadCount'));
+    }
     public function update(Request $request)
     {
         $user = Auth::user();

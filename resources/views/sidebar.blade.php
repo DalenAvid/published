@@ -120,7 +120,7 @@
             </li>
         </ul>
 
-        <a href="{{ route('adminpanel') }}">adm</a>
+        {{-- <a href="{{ route('adminpanel') }}">adm</a> --}}
     </div>
 </body>
 </html>
