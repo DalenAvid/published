@@ -20,7 +20,7 @@
 
         .admin-panel {
             display: flex;
-            padding: 20px;
+            
         }
 
         .content {
@@ -102,7 +102,7 @@
         <aside>
             <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
-            <a href="{{ route('index') }}">Вийти</a>
+            
         </aside>
 
         <main class="content">
