@@ -23,7 +23,9 @@
             width: 100%;
         }
 
-        
+        h2{
+            margin: 0;
+        }
 
         .content {
             flex-grow: 1;
