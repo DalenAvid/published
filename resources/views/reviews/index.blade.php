@@ -14,17 +14,6 @@
             display: flex;
             min-height: 100vh;
         }
-
-        /* Стиль для боковой панели */
-        aside {
-            width: 250px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            height: 100vh;
-            position: fixed;
-        }
-
         /* Контейнер для основного контента */
         .main-content {
             margin-left: 250px;
@@ -67,11 +56,13 @@
         }
 
         .review-avatar img {
-            width: 100%;
-            height: 100%;
+            width: 50%;
+            height: 50%;
             object-fit: cover;
         }
-
+    img{
+        width:100px;
+    }
         .review-content {
             flex-grow: 1;
         }
@@ -137,9 +128,11 @@
 <body>
 
     <!-- Боковая панель -->
+    <div>
     <aside>
         @include('sidebar')
     </aside>
+</div>
 
     <!-- Основной контент -->
     <div class="main-content">

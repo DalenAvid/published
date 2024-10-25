@@ -179,7 +179,7 @@
 
 
         <aside>
-            @include('sidebar') 
+            @include('sidebar')  <!-- Подключаем боковое меню -->
         </aside>
     </div>
 
@@ -205,16 +205,18 @@
             <div class="book-list">
                 @foreach ($genreBooks as $book)
                     <div class="book-item">
-                        <div class="book-cover">
-                            <img src="{{ asset('storage/' . $book->cover_image_url) }}" alt="{{ $book->title }}"
-                                class="img-fluid"
-                                onerror="this.onerror=null; this.src='https://good-book.com.ua/images/thumbs/001/0012953_svenna-vojna_550.jpeg';">
+                    <div class="book-cover">
+                            <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
+
                         </div>
+
                         <div class="book-info">
                             <div class="book-title">{{ $book->title }}</div>
-                            <div class="book-author">{{ $book->author }}</div>
+                            <div class="book-author">{{ !empty($book->author) ? $book->author : 'Автора не знайдено' }}</div>
                             <div class="book-rating">
-                                ⭐⭐⭐⭐⭐
+                                @for ($i = 0; $i < rand(2, 5); $i++)
+                                    ⭐
+                                @endfor
                             </div>
                         </div>
                     </div>

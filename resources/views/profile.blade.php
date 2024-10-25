@@ -165,7 +165,7 @@
         }
 
         .grey-rectangle {
-            width: 100%;
+            width: 160%;
             height: 150px;
             background-image: url('images/prof.jpg');
             margin-top: 10px;
@@ -175,12 +175,13 @@
         .container {
             display: flex;
             justify-content: space-between;
-            padding: 20px;
+            
+            gap: 20px;
         }
 
         .card {
             background-color: #fff;
-            width: 18%;
+            width: 14rem;
             padding: 10px;
             margin-bottom: 20px;
             display: flex;
@@ -190,7 +191,7 @@
         }
 
         .card img {
-            width: 100%;
+            width: 14rem;
             border-radius: 5px;
         }
 

@@ -7,29 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <style>
-/* Загальні стилі */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
-/* Стилі для бокового меню */
-.sidebar {
-    width: 220px;
-    padding: 20px;
-    background-color: #8B4513;
-    color: white;
-}
-
-.sidebar h2 {
-    text-align: center;
-}
 
 .content {
-    margin-left: 250px;
+    margin-left: 2rem;
     padding: 20px;
     flex-grow: 1;
 }
@@ -139,11 +127,9 @@ body {
 }
 </style>
 <body>
-    <div class="sidebar">
-        
-        <h2>Меню</h2>
+    <div>
         <aside>
-            @include('sidebar') <!-- Боковое меню -->
+            @include('sidebar')
         </aside>
     </div>
 
