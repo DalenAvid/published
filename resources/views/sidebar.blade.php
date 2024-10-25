@@ -29,10 +29,11 @@
         }
 
         .profile-picture img {
-            width: 80px;
+            width: 100px;
             height: 80px;
             border-radius: 50%;
             object-fit: cover;
+            margin-right: 0;
         }
 
         .profile-section h2 {

@@ -316,7 +316,7 @@
 </style>
 
 <body>
-    <div class="sidebar">
+    <div >
 
 
         <aside>

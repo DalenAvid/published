@@ -262,7 +262,7 @@ color: #666;
 }
 </style>
 <body>
-    <div class="sidebar">
+    <div >
         
         
         <aside>
