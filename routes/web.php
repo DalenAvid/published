@@ -87,7 +87,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/books/{id}/reviews', [ReviewController::class, 'index'])->name('books.reviews');
 Route::post('/books/{id}/reviews', [ReviewController::class, 'store'])->name('books.reviews.store');
-Route::get('/books/{id}/reviews', [ReviewController::class, 'index'])->name('books.reviews');
+// Route::get('/books/{id}/reviews', [ReviewController::class, 'index'])->name('books.reviews');
 Route::get('/user/books', [UserBooksController::class, 'index'])->name('user.books.index');
 Route::get('/featured-books', [BookController::class, 'featuredBooks'])->name('books.featured');
 Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
@@ -124,6 +124,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/books', [PurchasedBookController::class, 'index'])->name('user.books.index');
     Route::post('/purchased-books/add', [PurchasedBookController::class, 'addPurchasedBooks'])->name('purchased.books.add');
 });
+Route::get('/books/{id}/reviews', [ReviewController::class, 'index'])->name('books.reviews');
+Route::post('/books/{id}/reviews', [ReviewController::class, 'store'])->name('books.reviews.store');
+
 Route::get('/books', [BookController::class, 'index1'])->name('books.index');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::get('/books/{id}', [BookController::class, 'show1'])->name('books.show');

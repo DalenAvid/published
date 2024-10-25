@@ -47,75 +47,80 @@
         margin-bottom:20px;
         margin-left:70px;
     }
-        .profile-info {
-            text-align: center;
-        }
-    
-        .profile-info h2 {
-            font-size: 18px;
-            color: black;
-        }
-    
-        .profile-info .button1 {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-    
-        .profile-info .button1:hover {
-            background-color: #2980b9;
-        }
-        /* featured-books {
-    display: flex;
-    justify-content: flex-start;
-    margin: 30px 0;
-    padding: 10px;
-    margin-left:200px;
-    gap: 50px;
-}
 
-.book-card {
-    background-color: #DACFC3;
-    padding: 10px; 
-    width: 40%; 
-    box-sizing: border-box;
-}
+    .profile-info {
+        text-align: center;
+    }
 
-.book-content {
-    display: flex;
-    align-items: center;
-}
-.book-content img {
-    width: 100px; 
-    height: 160px;
-    margin: 0 20px; 
-}
+    .profile-info h2 {
+        font-size: 18px;
+        color: black;
+    }
 
-.book-info {
-    text-align: center;
-}
+    .profile-info .button1 {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+    }
 
-.book-info h3 {
-    font-size: 16px;
-    margin: 10px 0 5px 0;
-}
+    .profile-info .button1:hover {
+        background-color: #2980b9;
+    }
 
-.book-info p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px; 
-}
 
-.content {
-    margin-left: 190px;
-    padding: 20px;
-    flex-grow: 1;
-}
+
+    .featured-books {
+        display: flex;
+        justify-content: flex-start;
+        margin: 30px 0;
+        padding: 10px;
+        margin-left: 200px;
+        gap: 50px;
+    }
+
+    .book-card {
+        background-color: #DACFC3;
+        padding: 10px;
+        width: 40%;
+        box-sizing: border-box;
+    }
+
+    .book-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .book-content img {
+        width: 100px;
+        height: 160px;
+        margin: 0 20px;
+    }
+
+    .book-info {
+        text-align: center;
+    }
+
+    .book-info h3 {
+        font-size: 16px;
+        margin: 10px 0 5px 0;
+    }
+
+    .book-info p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .content {
+        margin-left: 190px;
+        padding: 20px;
+        flex-grow: 1;
+    }
 
 .header {
     display: flex;
@@ -124,18 +129,18 @@
     padding: 30px 20px;
 }
 
-.header-title {
-    color: black;
-    font-size: 26px;
-    font-weight: bold;
-    margin-left: 200px;
-}
+    .header-title {
+        color: black;
+        font-size: 26px;
+        font-weight: bold;
+        margin-left: 200px;
+    }
 
-.header-subtitle {
-    font-size: 18px;
-    color: #555;
-    margin-left: 220px;
-}
+    .header-subtitle {
+        font-size: 18px;
+        color: #555;
+        margin-left: 220px;
+    }
 
 .header-search input {
     padding: 10px;
@@ -152,13 +157,13 @@
     outline: none;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    padding: 30px;
-    margin-left: 160px;
-}
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 30px;
+        margin-left: 160px;
+    }
 
 .card {
     display: flex;
@@ -192,29 +197,27 @@
     color: #555;
 }
 
-.buy {
-    background-color: #8F5E48; 
-    color: white; 
-    border: none; 
-    border-radius: 20px; 
-    padding: 10px 20px;
-    font-size: 14px; 
-    cursor: pointer; 
-    margin-bottom: 5px; 
-}
+    .buy {
+        background-color: #8F5E48;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
 
-.carousel {
-    display: flex;
-    align-items: center;
-    margin-left: 230px;
-    position: relative;
-}
+    .carousel {
+        display: flex;
+        align-items: center;
+        margin-left: 230px;
+        position: relative;
+    }
 
-.carousel-container {
-    overflow: hidden;
-    max-width: 820px;
-    position: relative;
-}
+    .next {
+        right: 260px;
+    }
 
 .carousel-track {
     display: flex;
@@ -222,28 +225,18 @@
     will-change: transform;
 }
 
-.carousel-item {
-    flex: 0 0 240px; 
-    margin-right: 40px; 
-}
-
-.carousel-item:hover {
-        transform: scale(1.1);
+    .carousel-item {
+        flex: 0 0 240px;
+        margin-right: 40px;
         transition: transform 0.5s ease;
-        
-        cursor: pointer;
-        z-index: 1;
-        position: relative;
-        
-        margin-bottom: 40px;
-
     }
-.carousel-item img {
-    width: 140px; 
-    height: 200px; 
-    object-fit: cover; 
-    border-radius: 5px;
-}
+
+    .carousel-item img {
+        width: 140px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 
 .carousel-content {
     display: flex;
@@ -440,11 +433,11 @@
 .carousel-item:hover {
         transform: scale(1.1);
         transition: transform 0.5s ease;
-        
+
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
         position: relative;
-        
+
         margin-bottom: 40px;
 
     }
@@ -461,27 +454,28 @@
     justify-content: center;
 }
 
-.prev, .next {
-    background-color: #8F5E48;
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-}
+    .prev,
+    .next {
+        background-color: #8F5E48;
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 10px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        transition: background-color 0.3s ease, opacity 0.3s ease;
+    }
 
-.prev {
-    left: -60px; 
-}
+    .prev {
+        left: -60px;
+    }
 
-.next {
-    right: 320px; 
-}
+    .next {
+        right: 320px;
+    }
 
 .prev.disabled, .next.disabled {
     background-color: #ccc;
@@ -495,6 +489,19 @@
 }
 
 
+
+
+.carousel-item:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s ease;
+
+        cursor: pointer;
+        z-index: 2;
+        position: relative;
+
+        margin-bottom: 40px;
+
+    }
 </style>
 <body>
     <div>
@@ -504,24 +511,6 @@
             @include('sidebar') 
         </aside>
     </div>
-    {{-- <div class="sidebar">
-        <div class="profile-section">
-            <div class="profile-picture">
-                <img id="profileImage" src="{{ asset('images/default-avatar.png') }}">
-                <h2>{{ Auth::user()->name }}</h2>
-            </div>
-        </div>
-        <h2>Меню</h2>
-        <ul>
-            <li><a href="{{ route('index') }}">Домівка</a></li>
-            <li><a href="{{ route('library') }}">Бібліотека</a></li>
-            <li><a href="{{ route('user.books.index') }}">Ваші книги</a></li>
-            <li><a href="{{ route('book.upload') }}">Завантажити книгу</a></li>
-            <li><a href="{{ route('saved.index') }}">Збережене</a></li>
-            <li><a href="{{ route('profile.show') }}">Профіль</a></li>
-        </ul>
-    </div> --}}
-
     <div class="content">
         <header class="header">
             <div class="header-title">Домівка</div>
@@ -532,7 +521,7 @@
                 </button>
             </div>
         </header>
-        <h2 style="margin-left: 220px;  margin-top:-10px;">Для Вас</h2>
+        <h2 style="margin-left: 40px;  margin-top:-10px;">Для Вас</h2>
         <div class="featured-books" id="featured-books">
             @foreach($books->take(2) as $book) 
                 <div class="book-card">
@@ -549,7 +538,7 @@
                 </div>
             @endforeach
         </div>
-        <h2 style="margin-left: 220px; margin-top:-10px;">Вибране</h2>
+        <h2 style="margin-left: 40px; margin-top:-10px;">Вибране</h2>
         <div class="carousel">
             <button class="prev">&#8249;</button>
             <div class="carousel-container">
@@ -560,8 +549,8 @@
                             <div class="carousel-content">
                                 <div class="title">{{ $book->title }}</div>
                                 <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
-                                <div class="genre"  style="display: none;">{{ $book->genre ?? 'Невідомий жанр' }}</div>
-                                <p> ⭐⭐⭐⭐⭐</p>
+                                <div class="genre" style="display: none;">{{ $book->genre ?? 'Невідомий жанр' }}</div>
+                                <p> ⭐⭐⭐⭐</p>
                             </div>
                         </div>
                     @endforeach
@@ -569,53 +558,53 @@
             </div>
             <button class="next">&#8250;</button>
         </div>
-    
+
     </div>
  
 </body>
 
 <script>
-     const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const track = document.querySelector('.carousel-track');
-const items = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
 
-let currentIndex = 0;
-const itemsToShow = 3;
-const itemWidth = 280;
+    let currentIndex = 0;
+    const itemsToShow = 3;
+    const itemWidth = 280;
 
-function updateButtons() {
-    const visibleItems = Array.from(items).filter(item => item.style.display !== 'none'); 
-if (currentIndex === 0) {
-    prevButton.classList.add('disabled');
-} else {
-    prevButton.classList.remove('disabled');
-}
+    function updateButtons() {
+        const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+        if (currentIndex === 0) {
+            prevButton.classList.add('disabled');
+        } else {
+            prevButton.classList.remove('disabled');
+        }
 
-if (currentIndex >= visibleItems.length - itemsToShow) {
-    nextButton.classList.add('disabled');
-} else {
-    nextButton.classList.remove('disabled');
-}
-}
-
-prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-        updateButtons();
+        if (currentIndex >= visibleItems.length - itemsToShow) {
+            nextButton.classList.add('disabled');
+        } else {
+            nextButton.classList.remove('disabled');
+        }
     }
-});
 
-nextButton.addEventListener('click', () => {
-    if (currentIndex < items.length - itemsToShow) {
-        currentIndex++;
-        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-        updateButtons();
-    }
-});
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            updateButtons();
+        }
+    });
 
-updateButtons();
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < items.length - itemsToShow) {
+            currentIndex++;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            updateButtons();
+        }
+    });
+
+    updateButtons();
 
 function selectBook(coverImage, title, author, genre, bookUrl) {
     const featuredBooks = document.getElementById('featured-books');

@@ -140,6 +140,7 @@ body {
 </style>
 <body>
     <div class="sidebar">
+        
         <h2>Меню</h2>
         <aside>
             @include('sidebar') <!-- Боковое меню -->

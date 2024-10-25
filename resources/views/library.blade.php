@@ -66,6 +66,7 @@
 
         .content {
             padding: 20px;
+            padding-left: 10rem;
             /* Залишено для верхнього та нижнього відступів */
             flex-grow: 1;
         }
@@ -205,8 +206,9 @@
                 @foreach ($genreBooks as $book)
                     <div class="book-item">
                         <div class="book-cover">
-                            <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
-
+                            <img src="{{ asset('storage/' . $book->cover_image_url) }}" alt="{{ $book->title }}"
+                                class="img-fluid"
+                                onerror="this.onerror=null; this.src='https://good-book.com.ua/images/thumbs/001/0012953_svenna-vojna_550.jpeg';">
                         </div>
                         <div class="book-info">
                             <div class="book-title">{{ $book->title }}</div>

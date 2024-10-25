@@ -17,21 +17,39 @@ class ReviewController extends Controller
         return view('reviews.index', compact('book', 'reviews'));
     }
     public function store(Request $request, $id)
-    {
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'content' => 'required|string|max:500',
-        ]);
+{
+    $request->validate([
+        'rating' => 'required|integer|min:1|max:5',
+        'comment' => 'required|string|max:1000',
+    ]);
+    $review = new Review();
+    $review->user_id = auth()->id();
+    $review->book_id = $id;
+    $review->content = $request->comment;
+    $review->rating = $request->rating;
+    $review->created_at = now();
+    $review->updated_at = now();
+    
+    $review->save();
+    return redirect()->route('books.reviews', ['id' => $id])
+                     ->with('success', 'Ваш відгук було успішно додано!');
+}
+    // public function store(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'rating' => 'required|integer|min:1|max:5',
+    //         'content' => 'required|string|max:500',
+    //     ]);
 
-        Review::create([
-            'user_id' => Auth::id(),
-            'book_id' => $id,
-            'rating' => $request->input('rating'),
-            'content' => $request->input('content'),
-        ]);
+    //     Review::create([
+    //         'user_id' => Auth::id(),
+    //         'book_id' => $id,
+    //         'rating' => $request->input('rating'),
+    //         'content' => $request->input('content'),
+    //     ]);
 
-        return redirect()->route('books.reviews', ['id' => $id])
-                         ->with('success', 'Ваш відгук успішно додано!');
-    }
+    //     return redirect()->route('books.reviews', ['id' => $id])
+    //                      ->with('success', 'Ваш відгук успішно додано!');
+    // }
 
 }

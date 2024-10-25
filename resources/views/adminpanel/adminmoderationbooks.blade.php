@@ -15,7 +15,7 @@
             padding: 0;
             display: flex;
             background-color: #f4f4f9;
-            height: 100vh;
+            
         }
 
         .admin-panel {
@@ -33,7 +33,7 @@
             /* Центрує контент по горизонталі */
             align-items: center;
             /* Центрує контент по вертикалі */
-            padding: 20px;
+           
             background-color: #fff;
             box-sizing: border-box;
         }

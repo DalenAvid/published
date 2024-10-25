@@ -4,226 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Завантаження книги</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-        }
-
-       
-
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-            margin-left: 20px;
-            padding: 20px 0;
-        }
-
-        .profile-picture {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        .profile-picture img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-
-        .profile-picture h2 {
-            font-size: 16px;
-            color: #333;
-            white-space: nowrap;
-            margin-bottom: 20px;
-            margin-left: 70px;
-        }
-
-        .profile-info {
-            text-align: center;
-        }
-
-        .profile-info h2 {
-            font-size: 18px;
-            color: black;
-        }
-
-        .profile-info .button1 {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .profile-info .button1:hover {
-            background-color: #2980b9;
+            background-color: #fff; /* Легкий фон для контрасту */
         }
 
         
-
         .content {
-            margin-left: 250px;
-            padding: 20px;
             flex-grow: 1;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
             padding: 20px;
         }
 
-        .card {
-            background-color: #ccc;
-            width: 18%;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 5px;
-            position: relative;
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .rating {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-        }
-
-        .title {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .author {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .upload-container h1 {
-            font-size: 50px;
-            margin: 10px 0 5px;
-            text-align: center;
-        }
-
-        .upload-container h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .upload-container p {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
+        h1 {
+            color: #8b4513; /* Коричневий заголовок */
         }
 
         .upload-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background-color: #fff; /* Білий фон для контенту */
+            padding: 20px;
+            border-radius: 8px; /* Закруглені кути */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь для контейнера */
         }
 
-        .file-input-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 15px;
+        label {
+            display: block;
+            margin: 10px 0 5px; /* Відступи між мітками і полями вводу */
         }
 
-        .file-input-wrapper div {
-            width: 120px;
-            height: 120px;
-            border: 2px solid #8b4513;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .file-input-wrapper div:before {
-            content: '+';
-            font-size: 48px;
-            color: #8b4513;
-            position: absolute;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 60px;
-        }
-
-        .input-container input,
-        .input-container button {
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        textarea {
             width: 100%;
-            max-width: 500px;
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #8b4513;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #8b4513; /* Коричнева рамка */
+            border-radius: 4px; /* Закруглені кути */
+            transition: border-color 0.3s ease; /* Плавний перехід рамки */
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #d2691e; /* Темніша коричнева при фокусі */
+            outline: none; /* Вимкнення стандартного контурного маркера */
         }
 
         button {
-            background-color: #8b4513;
-            color: #fff;
+            background-color: #8b4513; /* Коричневий фон */
+            color: #fff; /* Білий текст */
+            border: none; /* Без рамки */
+            padding: 10px 15px;
+            border-radius: 4px; /* Закруглені кути */
+            cursor: pointer; /* Курсор при наведенні */
+            transition: background-color 0.3s ease; /* Плавний перехід фону */
         }
 
         button:hover {
-            background-color: #734222;
+            background-color: #d2691e; /* Темніший коричневий при наведенні */
         }
 
-        @media (max-width: 500px) {
-            .file-input-wrapper {
-                flex-direction: column;
-                align-items: center;
-            }
+        .file-upload {
+            position: relative;
+            width: 100%;
+            height: 150px; /* Висота для блоку */
+            border: 2px dashed #8b4513; /* Коричнева пунктирна рамка */
+            border-radius: 4px; /* Закруглені кути */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #8b4513; /* Коричневий текст */
+            font-size: 24px; /* Розмір шрифту */
+            margin-bottom: 15px; /* Відступ знизу */
+            cursor: pointer; /* Курсор при наведенні */
+        }
 
-            .file-input-wrapper div {
-                margin-bottom: 20px;
-                width: 100%;
-                height: auto;
-                max-width: 120px;
-                max-height: 120px;
-            }
+        .file-upload:hover {
+            background-color: #f5f5f5; /* Світлий фон при наведенні */
+        }
+
+        .file-upload input[type="file"] {
+            display: none; /* Сховати стандартний файл вводу */
+        }
+
+        .cover-preview {
+            display: none; /* Сховати зображення за замовчуванням */
+            max-width: 100%;
+            border-radius: 4px; /* Закруглені кути */
+            margin-top: 10px; /* Відступ зверху */
         }
 
 
@@ -298,8 +171,7 @@ form button:hover {
 </head>
 
 <body>
-    <div >
-       
+    <div>
         <aside>
             @include('sidebar')
         </aside>
@@ -311,7 +183,7 @@ form button:hover {
             <h2>Крок 1</h2>
             <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-              
+                {{-- @method('PUT')  --}}
                  <div class="file-input-wrapper">
                     <div onclick="document.getElementById('book_file').click();">
                         <input type="file" id="book_file" name="book_file" accept=".pdf,.doc,.docx" required style="display: none;">
@@ -386,21 +258,24 @@ form button:hover {
                 <div>
                     <input type="number" id="price" name="price" value="{{ old('price') }}" placeholder="Ціна" step="0.01" required>
                 </div>
+
                 <div>
                     <label for="book_file">Файл книги:</label>
                     <input type="file" id="book_file" name="book_file" accept=".pdf,.doc,.docx" required>
                 </div>
 
-                <div>
-                    <label for="cover_image">Обкладинка книги:</label>
+                <div class="file-upload">
+                    <span>+</span> <!-- Плюс по центру -->
+                    <label for="cover_image" style="cursor: pointer;">Обкладинка книги:</label>
                     <input type="file" id="cover_image" name="cover_image" accept="image/*" required>
                 </div>
 
                 <button type="submit">Зберегти</button>
              
             </form>
-            <script>
+            <img id="coverPreview" class="cover-preview" src="" alt="Preview of the cover image">
 
+            <script>
                 document.getElementById('book_file').addEventListener('change', function (event) {
                     var fileName = event.target.files[0].name;
                     document.getElementById('bookFileName').textContent = 'Вибраний файл: ' + fileName;
@@ -420,6 +295,7 @@ form button:hover {
                 });
             </script>
         </div>
+    </div>
 </body>
 
 </html>
