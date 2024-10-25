@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-
+use App\Models\PurchasedBook;
+use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     public function checkout(Request $request)
@@ -29,11 +30,20 @@ class OrderController extends Controller
             'expiry_date' => $request->input('expiry_date'),
             'cvv' => $request->input('cvv'),
         ]);
-
+        foreach ($selected_books as $id => $book) {
+            PurchasedBook::create([
+                'user_id' => Auth::id(),
+                'book_id' => $id, 
+                'order_id' => $order->id,
+            ]);
+        }
+    
+        // Видаляємо вибрані книги з сесії після оформлення замовлення
+        session()->forget('selected_books');
 
         
-        session(['ordered_books' => $selected_books]);
-        session()->forget('selected_books');
+        // session(['ordered_books' => $selected_books]);
+        // session()->forget('selected_books');
         return redirect()->route('thanks_for_your_order');
     }
     public function checkout1(Request $request)

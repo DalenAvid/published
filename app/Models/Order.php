@@ -17,7 +17,7 @@ class Order extends Model
     //     'cvv'
     // ];
     protected $fillable = [
-        'user_id', 'book_id', 'phone', 'address', 'card_number', 'expiry_date', 'cvv', 'quantity', 'total_price'
+        'user_id', 'book_id', 'phone', 'address','card_type', 'card_number', 'expiry_date', 'cvv', 'quantity', 'total_price'
     ];
 
     // Зв’язок з моделлю User

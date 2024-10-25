@@ -75,7 +75,7 @@ body {
 }
 
 .content {
-    margin-left: 250px;
+    margin-left: 3rem;
     padding: 20px;
     flex-grow: 1;
 }
