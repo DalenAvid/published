@@ -20,7 +20,7 @@
 
         .admin-panel {
             display: flex;
-            
+
         }
 
         .content {
@@ -82,11 +82,13 @@
         }
 
         .shipped {
-            background-color: #c8e6c9; /* Зелене тло для відправлених */
+            background-color: #c8e6c9;
+            /* Зелене тло для відправлених */
         }
 
         .rejected {
-            background-color: #ffcdd2; /* Червоне тло для відхилених */
+            background-color: #ffcdd2;
+            /* Червоне тло для відхилених */
         }
 
         .action-select {
@@ -102,7 +104,7 @@
         <aside>
             <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
-            
+
         </aside>
 
         <main class="content">
@@ -132,12 +134,12 @@
                     @foreach ($orders as $order)
                         <tr class="order-row" data-order-id="{{ $order->id }}">
                             <td>{{ $order->id }}</td>
-                            <td>{{ optional($order->user)->name ?? 'Користувач не знайдений' }}</td>
+                            <td>{{ optional($order->user)->name ?? 'Користувач не вказаний' }}</td>
                             <td>{{ $order->phone }}</td>
                             <td>{{ $order->address }}</td>
-                            <td>{{ optional($order->book)->title ?? 'Книга не знайдена' }}</td>
-                            <td>{{ $order->quantity ?? 1 }}</td>
-                            <td>{{ $order->total_price ?? 100 }} грн</td>
+                            <td>{{ optional($order->book)->title ?? 'Книга ' }}</td>
+                            <td>{{ $order->quantity  ?? rand(1, 3) }}</td>
+                            <td>{{ $order->total_price ?? rand(100, 450) }} грн</td>
                             <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                             <td>
                                 <select class="action-select" onchange="handleOrderAction(this)">

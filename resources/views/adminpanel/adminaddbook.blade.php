@@ -63,7 +63,8 @@
             box-sizing: border-box;
         }
 
-        .button {
+        button {
+            margin-top: 8px;
             background-color: brown;
             color: white;
             border: none;
@@ -75,7 +76,7 @@
             transition: background-color 0.3s;
         }
 
-        .button:hover {
+        button:hover {
             background-color: #8B4513;
         }
     </style>
@@ -142,7 +143,7 @@
                     <input type="number" id="price" name="price" step="0.01" required>
                 </div>
 
-                <button type="submit">Додати книгу</button> <!-- Додано закриття кнопки -->
+                <button  type="submit">Додати книгу</button> <!-- Додано закриття кнопки -->
             </form> <!-- Додано закриття форми -->
         </main>
     </div>

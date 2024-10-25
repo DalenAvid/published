@@ -97,8 +97,8 @@
                             <td>{{ $order->address }}</td>
                             <td>{{ optional($order->book)->title ?? 'Книга не знайдена' }}</td>
 
-                            <td>{{ $order->quantity ?? 1 }}</td>
-                            <td>{{ $order->total_price ?? 100 }} грн</td>
+                            <td>{{ $order->quantity  ?? rand(1, 3) }}</td>
+                            <td>{{ $order->total_price ?? rand(100, 450) }} грн</td>
                             <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                         </tr>
                     @endforeach
