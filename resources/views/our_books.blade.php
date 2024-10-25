@@ -264,7 +264,7 @@ color: #666;
 <body>
     <div class="sidebar">
         
-        <h2>Меню</h2>
+        
         <aside>
             @include('sidebar')  <!-- Подключаем боковое меню -->
         </aside>

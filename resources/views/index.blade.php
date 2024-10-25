@@ -85,14 +85,15 @@
         justify-content: flex-start;
         margin: 30px 0;
         padding: 10px;
-        margin-left: 200px;
+        margin-left: 10px;
         gap: 50px;
     }
 
     .book-card {
         background-color: #DACFC3;
-        padding: 10px;
-        width: 40%;
+        padding: 2rem;
+        width: 40rem;
+        height: 20rem;
         box-sizing: border-box;
     }
 
@@ -102,28 +103,32 @@
     }
 
     .book-content img {
-        width: 100px;
-        height: 160px;
+        width: 10rem;
+        height: 100%;
         margin: 0 20px;
     }
 
     .book-info {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+
     }
 
     .book-info h3 {
-        font-size: 16px;
+        font-size: 2rem;
         margin: 10px 0 5px 0;
     }
 
     .book-info p {
-        font-size: 14px;
+        font-size: 1.1rem;
         color: #555;
         margin-bottom: 5px;
     }
 
     .content {
-        margin-left: 190px;
+        margin-left: 1vw;
         padding: 20px;
         flex-grow: 1;
     }
@@ -139,13 +144,13 @@
         color: black;
         font-size: 26px;
         font-weight: bold;
-        margin-left: 200px;
+        margin-left: 1vw;
     }
 
     .header-subtitle {
         font-size: 18px;
         color: #555;
-        margin-left: 220px;
+        margin-left: 2vw;
     }
 
     .header-search input {
@@ -168,7 +173,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         padding: 30px;
-        margin-left: 160px;
+        margin-left: 1vw;
     }
 
     .card {
@@ -209,7 +214,7 @@
         border: none;
         border-radius: 20px;
         padding: 10px 20px;
-        font-size: 14px;
+        font-size: 1.2rem;
         cursor: pointer;
         margin-bottom: 5px;
     }
@@ -217,12 +222,11 @@
     .carousel {
         display: flex;
         align-items: center;
-        margin-left: 230px;
+        width:80%;
+        margin-left: 2vw;
         position: relative;
-    }
-
-    .next {
-        right: 260px;
+        overflow: hidden;
+        /* Додаємо overflow, щоб приховати переповнені елементи */
     }
 
     .carousel-track {
@@ -233,35 +237,19 @@
 
     .carousel-item {
         flex: 0 0 240px;
-        margin-right: 40px;
-        transition: transform 0.5s ease;
+        /* Ширина одного елемента */
+        margin-right: 20px;
+        /* Відстань між елементами */
     }
 
-    .carousel-item img {
-        width: 140px;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .carousel-item:hover {
-        transform: scale(1.1);
-        transition: transform 0.5s ease;
-        
-        cursor: pointer;
-        z-index: 1;
-        position: relative;
-        
-        margin-bottom: 40px;
-
-    }
-
-    .carousel-content {
+    /* Стиль для колонки */
+    .carousel-column {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        /* Вирівнювання в стовпчик */
     }
 
+    /* Залишити відступи для каруселі */
     .prev,
     .next {
         background-color: #8F5E48;
@@ -274,16 +262,44 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 1;
-        transition: background-color 0.3s ease, opacity 0.3s ease;
     }
 
     .prev {
-        left: -60px;
+        left: 10px;
+        /* Відступ для кнопки назад */
     }
 
     .next {
-        right: 320px;
+        right: 10px;
+        /* Відступ для кнопки вперед */
     }
+
+
+    .carousel-item img {
+        width: 140px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .carousel-item:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s ease;
+
+        cursor: pointer;
+        z-index: 2;
+        position: relative;
+
+        margin-bottom: 40px;
+
+    }
+
+    .carousel-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
 
     .prev.disabled,
     .next.disabled {
@@ -320,7 +336,7 @@
                 </button>
             </div>
         </header>
-        <h2 style="margin-left: 220px;  margin-top:-10px;">Для Вас</h2>
+        <h2 style="margin-left: 40px;  margin-top:-10px;">Для Вас</h2>
         <div class="featured-books" id="featured-books">
             @foreach($books->take(2) as $book) 
                 <div class="book-card">
@@ -338,7 +354,7 @@
                 </div>
             @endforeach
         </div>
-        <h2 style="margin-left: 220px; margin-top:-10px;">Вибране</h2>
+        <h2 style="margin-left: 40px; margin-top:-10px;">Вибране</h2>
         <div class="carousel">
             <button class="prev">&#8249;</button>
             <div class="carousel-container">
@@ -350,7 +366,7 @@
                                 <div class="title">{{ $book->title }}</div>
                                 <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
                                 <div class="genre" style="display: none;">{{ $book->genre ?? 'Невідомий жанр' }}</div>
-                                <p> ⭐⭐⭐⭐</p>
+                                <p>⭐⭐⭐⭐</p>
                             </div>
                         </div>
                     @endforeach
@@ -359,6 +375,8 @@
             <button class="next">&#8250;</button>
         </div>
 
+
+
     </div>
 
 </body>
@@ -366,21 +384,22 @@
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
     const track = document.querySelector('.carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
+    const items = document.querySelectorAll('.carousel-item'); // Зараз це всі елементи каруселі
 
     let currentIndex = 0;
-    const itemsToShow = 3;
-    const itemWidth = 280;
+    const columnsToShow = 3; // Кількість колонок для показу
+    const rowsToShow = 2; // Кількість рядків для показу
+    const totalItems = columnsToShow * rowsToShow; // Загальна кількість елементів для показу
+    const itemWidth = 90; // Ширина одного елемента
 
     function updateButtons() {
-        const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
         if (currentIndex === 0) {
             prevButton.classList.add('disabled');
         } else {
             prevButton.classList.remove('disabled');
         }
 
-        if (currentIndex >= visibleItems.length - itemsToShow) {
+        if (currentIndex >= items.length - totalItems) {
             nextButton.classList.add('disabled');
         } else {
             nextButton.classList.remove('disabled');
@@ -389,21 +408,24 @@
 
     prevButton.addEventListener('click', () => {
         if (currentIndex > 0) {
-            currentIndex--;
-            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            currentIndex -= columnsToShow; // Зменшити на кількість колонок
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`; // Змінюємо зсув
             updateButtons();
         }
     });
 
     nextButton.addEventListener('click', () => {
-        if (currentIndex < items.length - itemsToShow) {
-            currentIndex++;
-            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        if (currentIndex < items.length - totalItems) {
+            currentIndex += columnsToShow; // Збільшити на кількість колонок
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`; // Змінюємо зсув
             updateButtons();
         }
     });
 
+    // Встановлюємо початковий стан кнопок
     updateButtons();
+
+
 
     function selectBook(coverImage, title, author, genre, bookUrl) {
         const featuredBooks = document.getElementById('featured-books');
