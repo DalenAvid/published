@@ -13,13 +13,11 @@
             display: flex;
         }
 
-      
         .profile-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            margin-left: 20px;
             padding: 20px 0;
         }
 
@@ -39,16 +37,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            margin-right: 15px;
             object-fit: cover;
-        }
-
-        .profile-picture h2 {
-            font-size: 16px;
-            color: #333;
-            white-space: nowrap;
-            margin-bottom: 20px;
-            margin-left: 70px;
         }
 
         .profile-info {
@@ -75,10 +64,9 @@
             background-color: #2980b9;
         }
 
-       
         .content {
-            margin-left: 250px;
             padding: 20px;
+            /* Залишено для верхнього та нижнього відступів */
             flex-grow: 1;
         }
 
@@ -93,7 +81,6 @@
             color: black;
             font-size: 26px;
             font-weight: bold;
-            margin-left: 150px;
         }
 
         .header-search input {
@@ -116,7 +103,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             justify-items: start;
-            margin-left: 160px;
         }
 
         .book-item {
@@ -124,17 +110,13 @@
             align-items: center;
             transition: transform 0.3s ease;
         }
+
         .book-item:hover {
-           
             cursor: pointer;
-            transition: transform 0.3s ease;
             transform: translateY(-5px);
-            transition: transform 0.3s ease;
-            
             border-radius: 5px;
             z-index: 1;
             position: relative;
-
         }
 
         .book-cover img {
@@ -187,7 +169,6 @@
             color: black;
             font-weight: bold;
             margin-top: 5px;
-            margin-left: 170px;
         }
     </style>
 </head>
@@ -195,7 +176,7 @@
 <body>
     <div>
 
-        
+
         <aside>
             @include('sidebar')  <!-- Подключаем боковое меню -->
         </aside>
@@ -224,14 +205,18 @@
                 @foreach ($genreBooks as $book)
                     <div class="book-item">
                         <div class="book-cover">
-                            <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
-
+                            <img src="{{ asset('storage/' . $book->cover_image_url) }}" alt="{{ $book->title }}"
+                                class="img-fluid"
+                                onerror="this.onerror=null; this.src='https://good-book.com.ua/images/thumbs/001/0012953_svenna-vojna_550.jpeg';">
                         </div>
+
                         <div class="book-info">
                             <div class="book-title">{{ $book->title }}</div>
-                            <div class="book-author">{{ $book->author }}</div>
+                            <div class="book-author">{{ !empty($book->author) ? $book->author : 'Автора не знайдено' }}</div>
                             <div class="book-rating">
-                                ⭐⭐⭐⭐⭐
+                                @for ($i = 0; $i < rand(2, 5); $i++)
+                                    ⭐
+                                @endfor
                             </div>
                         </div>
                     </div>
