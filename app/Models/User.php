@@ -31,7 +31,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Review::class);
 }
-
+public function books()
+{
+    return $this->hasMany(Book::class);
+}
     public function getPhotoUrlAttribute()
     {
         return $this->photo ? asset('storage/profile_photos/' . $this->photo) : asset('images/default-avatar.png');

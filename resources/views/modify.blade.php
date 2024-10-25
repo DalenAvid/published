@@ -185,7 +185,15 @@
 .save-button:hover {
     background-color: #8F5E48;
 }
-
+.exit-icon {
+            position: absolute;
+            bottom: 100px;
+            left: 120px;
+            cursor: pointer;
+            width: 43px;
+            height: 43px;
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
@@ -207,6 +215,7 @@
             </div>
         </div>
         <div class="profile-content">
+            
             <div class="profile-info">
                 
                 <img src="{{ asset('icons/icon.jpg') }}" >
@@ -214,6 +223,7 @@
                 <p>{{ Auth::user()->location ?? 'Unknown Location' }}</p>
                 {{-- <p>{{ $user->address }}</p> --}}
             </div>
+            <img id="exitIcon" src="{{ asset('icons/exit.jpg') }}" alt="Exit Icon" class="exit-icon" onclick="window.history.back();">
             <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="profile-form">
                 @csrf
                 @method('PUT')
@@ -240,6 +250,7 @@
                     <button type="submit" class="save-button">Зберегти</button>
                 </div>
             </form>
+           
         </div>
     </div>
     <script>

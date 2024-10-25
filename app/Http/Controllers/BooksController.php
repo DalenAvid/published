@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Books;
-
+use App\Models\Book;
 class BooksController extends Controller
 {
     public function index()
@@ -46,7 +46,16 @@ class BooksController extends Controller
         $book = Books::findOrFail($id);
         return view('books.edit', compact('book'));
     }
-
+    public function incrementReadCount($id)
+    {
+        $book = Book::find($id);
+        if ($book) {
+            $book->increment('read_count');
+            return response()->json(['success' => true, 'count' => $book->read_count]);
+        }
+        return response()->json(['success' => false], 404);
+    }
+    
     public function update(Request $request, $id)
     {
         $request->validate([

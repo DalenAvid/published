@@ -38,7 +38,6 @@ class OrderController extends Controller
             ]);
         }
     
-        // Видаляємо вибрані книги з сесії після оформлення замовлення
         session()->forget('selected_books');
 
         

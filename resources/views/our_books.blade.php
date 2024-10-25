@@ -144,7 +144,7 @@
             <div class="header-title">Ваші книги</div>
             <div class="button-container">
                 <button class="button1">Читати останню книгу</button>
-                <button class="button2">Слухати останню книгу</button>
+                {{-- <button class="button2">Слухати останню книгу</button> --}}
             </div>
         </header>
 
@@ -156,7 +156,12 @@
                 <div class="book-list">
                     @foreach($purchasedBooks as $purchasedBook)
                         <div class="book-item">
-                            <img src="{{ asset($purchasedBook->book->cover_image) }}" alt="{{ $purchasedBook->book->title }}">
+                            <a href="{{ route('book.view', ['id' => $purchasedBook->book->id]) }}" target="_blank">
+                                <div class="image-container" onclick="incrementReadCount({{ $purchasedBook->book->id }})">
+                                    <img src="{{ asset($purchasedBook->book->cover_image) }}" alt="{{ $purchasedBook->book->title }}">
+                                </div>
+                            </a>
+                            {{-- <img src="{{ asset($purchasedBook->book->cover_image) }}" alt="{{ $purchasedBook->book->title }}"> --}}
                             <div class="book-info">
                                 <h3 class="title">{{ $purchasedBook->book->title }}</h3>
                                 <p class="author">{{ $purchasedBook->book->author ?? 'Автор невідомий' }}</p>
@@ -168,5 +173,24 @@
         </div>
     </div>
 </body>
+<script>
+    function incrementReadCount(bookId) {
+        fetch(`/books/${bookId}/increment-read`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('readCount').innerText = data.count;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
 
 </html>
