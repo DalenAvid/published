@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Адмін Панель</title>
-    
+
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             display: flex;
         }
 
-       
+
         .content {
             flex-grow: 1;
             padding: 20px;
@@ -67,111 +67,46 @@
         }
     </style>
     <div class="admin-panel">
-    <aside>
+        <aside>
             <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
             <a href="{{ route('index') }}">Вийти</a>
         </aside>
 
         <main class="content">
-            <h1>Замовлення</h1>
-            <table>
+            <h1>Список замовлень</h1>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Номер замовлення</th>
+                        <th>ID</th>
                         <th>Користувач</th>
-                        <th>Країна</th>
-                        <th>Тип</th>
+                        <th>Телефон</th>
+                        <th>Адреса</th>
+                        <th>Книга</th>
                         <th>Кількість</th>
-                        <th>Статус</th>
-                        <th>Сума</th>
-                        <th>Додатково</th>
+                        <th>Загальна ціна</th>
+                        <th>Дата замовлення</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Іван Іванов</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>3</td>
-                        <td>Оплачено</td>
-                        <td>450 грн</td>
-                        <td>Швидка доставка</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Марія Петренко</td>
-                        <td>Україна</td>
-                        <td>Електронна книга</td>
-                        <td>1</td>
-                        <td>Оплачено</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Олексій Сидоров</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>2</td>
-                        <td>Оплачено</td>
-                        <td>300 грн</td>
-                        <td>Знижка 10%</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>
-                        <td>Наталія Коваль</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>5</td>
-                        <td>Оплачено</td>
-                        <td>750 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>005</td>
-                        <td>Денис Литвин</td>
-                        <td>Україна</td>
-                        <td>Електронна книга</td>
-                        <td>1</td>
-                        <td>Очікується</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>006</td>
-                        <td>Олена Шевченко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>4</td>
-                        <td>Оплачено</td>
-                        <td>600 грн</td>
-                        <td>Подарункове пакування</td>
-                    </tr>
-                    <tr>
-                        <td>007</td>
-                        <td>Юрій Ткаченко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>2</td>
-                        <td>Оплачено</td>
-                        <td>300 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>008</td>
-                        <td>Андрій Гончар</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>1</td>
-                        <td>Очікується</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ optional($order->user)->name ?? 'Користувач не знайдений' }}</td>
+
+                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->address }}</td>
+                            <td>{{ optional($order->book)->title ?? 'Книга не знайдена' }}</td>
+
+                            <td>{{ $order->quantity ?? 1 }}</td>
+                            <td>{{ $order->total_price ?? 100 }} грн</td>
+                            <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
+
             </table>
+
         </main>
     </div>
 </body>
