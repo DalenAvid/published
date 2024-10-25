@@ -9,17 +9,27 @@ use App\Models\PurchasedBook;
 class UserBooksController extends Controller
 {
     public function index()
-    {
-        // $books = Book::where('user_id', Auth::id())->get();
-        // return view('our_books', compact('books'));
+{
+    $user_id = Auth::id();
+    $purchasedBooks = PurchasedBook::where('user_id', $user_id)
+        ->with('book') // підтягуємо дані про книгу
+        ->get();
+        
+    return view('our_books', compact('purchasedBooks'));
+}
 
-        $user_id = Auth::id();
-        $purchasedBooks = PurchasedBook::where('user_id', $user_id)
-            ->with('book') 
-            ->get();
-        // $purchasedBooks = PurchasedBook::where('user_id', Auth::id())->with('book')->get();
-        return view('our_books', compact('purchasedBooks'));
-    }
+    // public function index()
+    // {
+    //     // $books = Book::where('user_id', Auth::id())->get();
+    //     // return view('our_books', compact('books'));
+
+    //     $user_id = Auth::id();
+    //     $purchasedBooks = PurchasedBook::where('user_id', $user_id)
+    //         ->with('book') 
+    //         ->get();
+    //     // $purchasedBooks = PurchasedBook::where('user_id', Auth::id())->with('book')->get();
+    //     return view('our_books', compact('purchasedBooks'));
+    // }
 
     public function show($id)
     {
