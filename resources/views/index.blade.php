@@ -10,19 +10,20 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
     body {
-
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         display: flex;
+        
     }
+
 
     .profile-section {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
-       
+
     }
 
     .profile-picture {
@@ -91,7 +92,7 @@
     .book-card {
         background-color: #DACFC3;
         padding: 1.5rem;
-        width: 35rem;
+        width: 40%;
         height: 20rem;
         box-sizing: border-box;
     }
@@ -102,8 +103,8 @@
     }
 
     .book-content img {
-        width: 10rem;
-        height: 100%;
+        max-width: 10rem;
+       
         margin: 0 20px;
     }
 
@@ -118,7 +119,7 @@
 
     .book-info h3 {
         font-size: 1.5rem;
-        
+
     }
 
     .book-info p {
@@ -222,7 +223,7 @@
     .carousel {
         display: flex;
         align-items: center;
-        width:70%;
+        max-width: 70%;
         margin-left: 2vw;
         position: relative;
         overflow: hidden;
@@ -317,7 +318,7 @@
 </style>
 
 <body>
-    <div >
+    <div>
 
 
         <aside>
