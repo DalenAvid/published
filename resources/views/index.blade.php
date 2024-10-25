@@ -22,8 +22,7 @@
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
-        margin-left: 20px;
-        padding: 20px 0;
+       
     }
 
     .profile-picture {
@@ -240,6 +239,7 @@
         /* Ширина одного елемента */
         margin-right: 20px;
         /* Відстань між елементами */
+        transition: transform 0.5s ease;
     }
 
     /* Стиль для колонки */
