@@ -90,8 +90,8 @@
 
     .book-card {
         background-color: #DACFC3;
-        padding: 2rem;
-        width: 40rem;
+        padding: 1.5rem;
+        width: 35rem;
         height: 20rem;
         box-sizing: border-box;
     }
@@ -112,12 +112,13 @@
         display: flex;
         flex-direction: column;
         align-items: baseline;
+        height: 80%;
 
     }
 
     .book-info h3 {
-        font-size: 2rem;
-        margin: 10px 0 5px 0;
+        font-size: 1.5rem;
+        
     }
 
     .book-info p {
@@ -221,7 +222,7 @@
     .carousel {
         display: flex;
         align-items: center;
-        width:80%;
+        width:70%;
         margin-left: 2vw;
         position: relative;
         overflow: hidden;
@@ -316,7 +317,7 @@
 </style>
 
 <body>
-    <div class="sidebar">
+    <div >
 
 
         <aside>
