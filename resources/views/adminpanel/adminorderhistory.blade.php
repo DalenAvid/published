@@ -73,133 +73,39 @@
         </aside>
 
         <main class="content">
-            <h1>Історія Замовлень</h1>
-            <table>
+            <h1>Історія замовлень</h1>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Номер замовлення</th>
+                        <th>ID</th>
                         <th>Користувач</th>
-                        <th>Країна</th>
-                        <th>Тип</th>
+                        <th>Телефон</th>
+                        <th>Адреса</th>
+                        <th>Книга</th>
                         <th>Кількість</th>
-                        <th>Статус</th>
-                        <th>Сума</th>
-                        <th>Додатково</th>
+                        <th>Загальна ціна</th>
+                        <th>Дата замовлення</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Іван Іванов</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>3</td>
-                        <td>Оплачено</td>
-                        <td>450 грн</td>
-                        <td>Швидка доставка</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Марія Петренко</td>
-                        <td>Україна</td>
-                        <td>Електронна книга</td>
-                        <td>1</td>
-                        <td>Оплачено</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>Олексій Сидоров</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>2</td>
-                        <td>Оплачено</td>
-                        <td>300 грн</td>
-                        <td>Знижка 10%</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>
-                        <td>Наталія Коваль</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>5</td>
-                        <td>Оплачено</td>
-                        <td>750 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>005</td>
-                        <td>Денис Литвин</td>
-                        <td>Україна</td>
-                        <td>Електронна книга</td>
-                        <td>1</td>
-                        <td>Очікується</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>006</td>
-                        <td>Олена Шевченко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>4</td>
-                        <td>Оплачено</td>
-                        <td>600 грн</td>
-                        <td>Подарункове пакування</td>
-                    </tr>
-                    <tr>
-                        <td>007</td>
-                        <td>Юрій Ткаченко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>2</td>
-                        <td>Оплачено</td>
-                        <td>300 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>008</td>
-                        <td>Андрій Гончар</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>1</td>
-                        <td>Очікується</td>
-                        <td>150 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>009</td>
-                        <td>Сергій Мельник</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>3</td>
-                        <td>Оплачено</td>
-                        <td>450 грн</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>010</td>
-                        <td>Катерина Василенко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>6</td>
-                        <td>Оплачено</td>
-                        <td>900 грн</td>
-                        <td>Швидка доставка</td>
-                    </tr>
-                    <tr>
-                        <td>011</td>
-                        <td>Михайло Бондаренко</td>
-                        <td>Україна</td>
-                        <td>Книга</td>
-                        <td>2</td>
-                        <td>Оплачено</td>
-                        <td>300 грн</td>
-                        <td>Знижка 5%</td>
-                    </tr>
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ optional($order->user)->name ?? 'Користувач не знайдений' }}</td>
+
+                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->address }}</td>
+                            <td>{{ optional($order->book)->title ?? 'Книга не знайдена' }}</td>
+
+                            <td>{{ $order->quantity ?? 1 }}</td>
+                            <td>{{ $order->total_price ?? 100 }} грн</td>
+                            <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
+
             </table>
+
         </main>
     </div>
 </body>

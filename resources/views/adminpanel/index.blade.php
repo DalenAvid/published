@@ -40,6 +40,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
         }
 
         table,
