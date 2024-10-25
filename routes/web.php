@@ -42,7 +42,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Auth::routes();   
 
-
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -86,13 +85,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload-book', [UploadBookController::class, 'store'])->name('book.store');
    
 });
-// Route::get('/books/{id}/reviews', [BookController::class, 'showReviews'])->name('book.reviews');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('more_detail');
+
+ Route::get('/books/{id}/reviews', [BookController::class, 'showReviews'])->name('book.reviews');
 // Route::post('/books/{book_id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 
 Route::get('/book/{id}', [BookController::class, 'show1'])->name('book.show');
-Route::get('/book/{id}/reviews', [ReviewController::class, 'index'])->name('book.reviews');
-Route::post('/book/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+// Route::get('/book/{id}/reviews', [ReviewController::class, 'index'])->name('book.reviews');
+// Route::post('/book/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::get('/featured-books', [BookController::class, 'featuredBooks'])->name('books.featured');
 Route::get('/books/search', [BookController::class, 'search'])->name('books.search');

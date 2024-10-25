@@ -13,15 +13,7 @@
             display: flex;
         }
 
-        .sidebar {
-            width: 250px;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+       
 
         .profile-section {
             display: flex;
@@ -84,39 +76,7 @@
             background-color: #2980b9;
         }
 
-        .sidebar h2 {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-            width: 100%;
-            padding-left: 140px;
-        }
-
-        .sidebar ul li {
-            width: 100%;
-            border-bottom: 1px solid black;
-            position: relative;
-        }
-
-        .sidebar ul li a {
-            display: block;
-            padding: 15px 0px;
-            color: black;
-            text-decoration: none;
-            width: 100%;
-        }
-
-        .sidebar ul li::before {
-            content: '>';
-            position: absolute;
-            right: 3px;
-            top: 15px;
-            color: black;
-        }
+        
 
         .content {
             margin-left: 250px;
@@ -338,9 +298,8 @@ form button:hover {
 </head>
 
 <body>
-    <div class="sidebar">
-
-        <h2>Меню</h2>
+    <div >
+       
         <aside>
             @include('sidebar')
         </aside>
@@ -352,7 +311,7 @@ form button:hover {
             <h2>Крок 1</h2>
             <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                {{-- @method('PUT')  --}}
+              
                  <div class="file-input-wrapper">
                     <div onclick="document.getElementById('book_file').click();">
                         <input type="file" id="book_file" name="book_file" accept=".pdf,.doc,.docx" required style="display: none;">
@@ -398,42 +357,33 @@ form button:hover {
             <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    {{-- <label for="title">Назва книги:</label> --}}
                     <input type="text" id="title" name="title" value="{{ old('title') }}" placeholder="Назва книги" required>
-                    {{-- <input type="text" id="title" name="title" value="{{ old('title') }}" required> --}}
                 </div>
 
                 <div>
-                    {{-- <label for="description">Опис книги:</label> --}}
                     <textarea id="description" name="description" placeholder="Опис книги" required>{{ old('description') }}</textarea>
                 </div>
 
                 <div>
-                    {{-- <label for="language">Мова:</label> --}}
                     <input type="text" id="language" name="language" value="{{ old('language') }}" placeholder="Мова" required>
                 </div>
 
                 <div>
-                    {{-- <label for="genre">Жанр:</label> --}}
                     <input type="text" id="genre" name="genre" value="{{ old('genre') }}" placeholder="Жанр" required>
                 </div>
 
                 <div>
-                    {{-- <label for="age">Вік:</label> --}}
                     <input type="text" id="age" name="age" value="{{ old('age') }}" placeholder="Вік" required>
                 </div>
 
                 <div>
-                    {{-- <label for="year">Рік видання:</label> --}}
                     <input type="number" id="year" name="year" value="{{ old('year') }}" placeholder="Рік видання" required>
                 </div>
 
                 <div>
-                    {{-- <label for="pages">Кількість сторінок:</label> --}}
                     <input type="number" id="pages" name="pages" value="{{ old('pages') }}" placeholder="Кількість сторінок" required>
                 </div>
                 <div>
-                    {{-- <label for="price">Ціна:</label> --}}
                     <input type="number" id="price" name="price" value="{{ old('price') }}" placeholder="Ціна" step="0.01" required>
                 </div>
                 <div>

@@ -21,14 +21,16 @@ class Book extends Model
         'book_file',
         'cover_image',
         'price',
+        'user_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
-    public function user()
-{
-    return $this->belongsTo(User::class, 'user_id');
-}
 
 }

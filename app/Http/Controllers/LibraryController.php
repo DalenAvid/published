@@ -11,9 +11,15 @@ class LibraryController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
-        return view('library.index', compact('books'));
+        $book = Book::with('users')->get(); 
+        $users = User::all(); 
+        // return view('library', compact('books'));
+        // $books = Book::all();
+       // return view('library.index', compact('books'));
+
+    return view('library.index', compact('books', 'users'));
     }
+
 
     public function store(Request $request)
     {
@@ -47,6 +53,8 @@ class LibraryController extends Controller
             $bookFile = $request->file('book_file')->store('books', 'public');
             $book->book_file = $bookFile;
         }
+        $books = Book::with('user')->get();
+        $book = Book::with('user')->get();  
 
         $book->save();
 

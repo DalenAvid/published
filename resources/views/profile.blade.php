@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +17,13 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .profile-container h1 {
             margin-right: 260px;
             margin-bottom: 30px;
             white-space: nowrap;
         }
-        
+
         .profile-header {
             text-align: center;
             margin-bottom: 20px;
@@ -46,12 +47,13 @@
             border-radius: 50%;
         }
 
-        .profile-picture:hover #uploadButton, 
+        .profile-picture:hover #uploadButton,
         .profile-picture:hover #deleteButton {
             display: block;
         }
 
-        #uploadButton, #deleteButton {
+        #uploadButton,
+        #deleteButton {
             display: none;
             position: absolute;
             top: 50%;
@@ -90,8 +92,8 @@
         }
 
         .button1 {
-            background-color: #8F5E48; 
-            color: #ffffff; 
+            background-color: #8F5E48;
+            color: #ffffff;
             border: none;
             width: 180px;
             height: 40px;
@@ -99,13 +101,15 @@
         }
 
         .social-media-title {
-            text-align: left; 
-            margin-left: 10px; 
+            text-align: left;
+            margin-left: 10px;
             font-size: 24px;
         }
-        .social-media-title h6{
-             margin-top: -16px;  
+
+        .social-media-title h6 {
+            margin-top: -16px;
         }
+
         .alternative-login {
             margin-top: 1rem;
             text-align: center;
@@ -133,7 +137,8 @@
             flex-wrap: wrap;
         }
 
-        .col-left, .col-right {
+        .col-left,
+        .col-right {
             flex: 1;
             margin: 10px;
         }
@@ -156,7 +161,7 @@
             margin: 0 5px;
             padding: 10px 20px;
             margin-bottom: 5px;
-            border-radius: 20px; 
+            border-radius: 20px;
         }
 
         .grey-rectangle {
@@ -175,13 +180,13 @@
 
         .card {
             background-color: #fff;
-    width: 18%;
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
+            width: 18%;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: none;
         }
 
         .card img {
@@ -201,8 +206,8 @@
 
         .title {
             font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .author {
@@ -211,135 +216,145 @@
         }
 
         .btn {
-            background-color: initial; 
+            background-color: initial;
             border: none;
         }
 
         .btn:hover {
-            background-color: #d3d3d3; 
+            background-color: #d3d3d3;
             cursor: pointer;
         }
 
         .btn:active {
-            background-color: #a9a9a9; 
+            background-color: #a9a9a9;
+        }
+        .exit{
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-left">
-            <div class="profile-container">
-                <h1 class="text-center">Ваш профіль</h1>
-                <div class="profile-header">
-                    <div class="profile-picture">
-                        <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png" alt="Profile Photo">
+    <div class="container">
+        <div class="row">
+            <div class="col-left">
+                <div class="profile-container">
+                    <h1 class="text-center">Ваш профіль</h1>
+                    <div class="profile-header">
+                        <div class="profile-picture">
+                            <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png"
+                                alt="Profile Photo">
 
-                        <input type="file" id="imageUpload" style="display:none;" accept="image/*" />
-                        <button id="uploadButton">Upload</button>
-                        <button id="deleteButton">&times;</button>
+                            <input type="file" id="imageUpload" style="display:none;" accept="image/*" />
+                            <button id="uploadButton">Upload</button>
+                            <button id="deleteButton">&times;</button>
+                        </div>
+                        <div class="profile-info">
+                            <h2>{{ Auth::user()->name }}</h2>
+                            <p>{{ Auth::user()->location ?? 'Unknown Location' }}</p>
+                            <a href="{{ route('profile.modify') }}" style="text-decoration: none;">
+                                <button class="button1">Редагувати</button>
+                            </a>
+                        </div>
                     </div>
-                    <div class="profile-info">
-                        <h2>{{ Auth::user()->name }}</h2>
-                        <p>{{ Auth::user()->location ?? 'Unknown Location' }}</p>
-                        <a href="{{ route('profile.modify') }}" style="text-decoration: none;">
-                            <button class="button1">Редагувати</button>
-                        </a>
-                      </div>
-                </div>
-                <div class="social-media-title">
-                    <h6>Мої інші соц.мережі:</h6>
-                </div>
-                <div class="alternative-login">
-                    <a href="{{ route('socialite.auth', ['provider' => 'google']) }}"><img src="{{ asset('icons/google.jpg') }}" alt="Google"></a>
-                    <a href="{{ route('socialite.auth', ['provider' => 'apple']) }}"><img src="{{ asset('icons/apple.jpg') }}" alt="Apple"></a>
-                    <a href="{{ route('socialite.auth', ['provider' => 'facebook']) }}"><img src="{{ asset('icons/facebook.jpg') }}" alt="Facebook"></a>
-                <hr>
-                </div>
+                    <div class="social-media-title">
+                        <h6>Мої інші соц.мережі:</h6>
+                    </div>
+                    <div class="alternative-login">
+                        <a href="{{ route('socialite.auth', ['provider' => 'google']) }}"><img
+                                src="{{ asset('icons/google.jpg') }}" alt="Google"></a>
+                        <a href="{{ route('socialite.auth', ['provider' => 'apple']) }}"><img
+                                src="{{ asset('icons/apple.jpg') }}" alt="Apple"></a>
+                        <a href="{{ route('socialite.auth', ['provider' => 'facebook']) }}"><img
+                                src="{{ asset('icons/facebook.jpg') }}" alt="Facebook"></a>
+                        <hr>
+                    </div>
 
-                <div class="stats">
-                    <div>
-                        <h4>42</h4>
-                        <p>прочитано</p>
+                    <div class="stats">
+                        <div>
+                            <h4>42</h4>
+                            <p>прочитано</p>
+                        </div>
+                        <div>
+                            <h4>0</h4>
+                            <p>прослухано</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4>0</h4>
-                        <p>прослухано</p>
-                    </div>
+                </div>
+                <div class="exit">
+                    <img id="exitIcon" src="images/exit.jpg" alt="icon"
+                        style="width: 43px; height: 43px; margin-left: -90px; margin-top:60px;">
                 </div>
             </div>
-            <div class="exit">
-                <img id="exitIcon" src="images/exit.jpg" alt="icon" style="width: 43px; height: 43px; margin-left: -90px; margin-top:60px;">
-            </div>
-        </div>
-        <div class="col-right">
-            <div class="grey-rectangle"></div>
+            <div class="col-right">
+                <div class="grey-rectangle"></div>
 
-            <div class="tabs">
-                <a href="{{ route('profile.show') }}" class="btn btn-light">Опубліковані книги</a>
-                <button class="btn btn-light">Запитання та відповіді</button>
-                <button class="btn btn-light">Ваші відгуки</button>
-            </div>
+                <div class="tabs">
+                    <a href="{{ route('profile.show') }}" class="btn btn-light">Опубліковані книги</a>
+                    <button class="btn btn-light">Запитання та відповіді</button>
+                    <button class="btn btn-light">Ваші відгуки</button>
+                </div>
 
-             <div class="content">
-                <div class="container">
-                    <div class="content">
-                        <div class="container">
-                            <div class="card">
-                                <div class="image-container">
-                                    <img src="icons/book.png" alt="Обложка книги">
+                <div class="content">
+                    <div class="container">
+                        <div class="content">
+                            <div class="container">
+                                <div class="card">
+                                    <div class="image-container">
+                                        <img src="icons/book.png" alt="Обложка книги">
+                                    </div>
+                                    <div class="info-container">
+                                        <div class="title">Дім у сотнях місць</div>
+                                        <div class="author">Аліна Вернадська</div>
+                                    </div>
                                 </div>
-                                <div class="info-container">
-                                    <div class="title">Дім у сотнях місць</div>
-                                    <div class="author">Аліна Вернадська</div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="image-container">
-                                    <img src="icons/bo.png" alt="Обложка книги">
-                                </div>
-                                <div class="info-container">
-                                    <div class="title">Грати</div>
-                                    <div class="author">Аліна Вернадська</div>
+                                <div class="card">
+                                    <div class="image-container">
+                                        <img src="icons/bo.png" alt="Обложка книги">
+                                    </div>
+                                    <div class="info-container">
+                                        <div class="title">Грати</div>
+                                        <div class="author">Аліна Вернадська</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                   
 
+
+                    </div>
                 </div>
+
             </div>
-            
         </div>
     </div>
-</div>
 
-<script>
-    document.getElementById("exitIcon").addEventListener("click", function() {
-    window.location.href = 'index'; 
-});
+    <script>
+        document.getElementById("exitIcon").addEventListener("click", function () {
+            window.location.href = 'index';
+        });
 
-    document.getElementById("uploadButton").addEventListener("click", function() {
-        document.getElementById("imageUpload").click();
-    });
+        document.getElementById("uploadButton").addEventListener("click", function () {
+            document.getElementById("imageUpload").click();
+        });
 
-    document.getElementById("imageUpload").addEventListener("change", function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                document.getElementById("profileImage").setAttribute("src", event.target.result);
+        document.getElementById("imageUpload").addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById("profileImage").setAttribute("src", event.target.result);
+                }
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
-        }
-    });
+        });
 
-    document.getElementById("deleteButton").addEventListener("click", function() {
-        const defaultAvatar = "{{ asset('images/default-avatar.png') }}";
-        document.getElementById("profileImage").setAttribute("src", defaultAvatar);
+        document.getElementById("deleteButton").addEventListener("click", function () {
+            const defaultAvatar = "{{ asset('images/default-avatar.png') }}";
+            document.getElementById("profileImage").setAttribute("src", defaultAvatar);
         });  
-</script>
+    </script>
 
 </body>
+
 </html>

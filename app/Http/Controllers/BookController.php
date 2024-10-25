@@ -18,7 +18,7 @@ class BookController extends Controller
         return view('books.index', compact('books'));
     }
     public function show($id) {
-        $book = Book::findOrFail($id); 
+        $books = Book::findOrFail($id); 
         return view('more_detail', compact('book'));
     }
     
@@ -105,6 +105,7 @@ public function removeBookFromPage1($id)
 public function store(Request $request)
 {
     $validatedData = $request->validate([
+        'user_id' => Auth::id(),
         'title' => 'required|max:255',
         'description' => 'required',
         'language' => 'required|max:50',
@@ -121,7 +122,7 @@ public function store(Request $request)
     $coverImagePath = $request->file('cover_image')->store('covers');
 
     Book::create([
-        'user_id' => Auth::id(),
+         'user_id' => Auth::id(),
         'title' => $validatedData['title'],
         'description' => $validatedData['description'],
         'language' => $validatedData['language'],
@@ -182,6 +183,6 @@ public function showReviews($id) {
     $book = Book::findOrFail($id);
     $reviews = $book->reviews; 
     return view('book.reviews', compact('book', 'reviews'));
-}
+ }
 
 }
