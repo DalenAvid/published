@@ -34,7 +34,7 @@ class AdminAddBookController extends Controller
             'year' => 'required|integer',
             'pages' => 'required|integer',
             'book_file' => 'required|file|max:2048',
-            'cover_image' => 'required|file|max:2048',
+            'cover_image' => 'required|string|max:255',
             'price' => 'required|numeric',
         ]);
 
@@ -49,15 +49,16 @@ class AdminAddBookController extends Controller
         $book->year = $validatedData['year'];
         $book->pages = $validatedData['pages'];
         $book->price = $validatedData['price'];
+        $book->cover_image = $validatedData['cover_image'];
 
         // Обробка файлів
         if ($request->hasFile('book_file')) {
             $book->book_file = $request->file('book_file')->store('books');
         }
 
-        if ($request->hasFile('cover_image')) {
-            $book->cover_image = $request->file('cover_image')->store('covers');
-        }
+        // if ($request->hasFile('cover_image')) {
+        //     $book->cover_image = $request->file('cover_image')->store('covers');
+        // }
 
         $book->save();
 
@@ -82,11 +83,13 @@ class AdminAddBookController extends Controller
     $book->year = $request->input('year');
     $book->pages = $request->input('pages');
     $book->price = $request->input('price');
+    $book->cover_image = $request->input('cover_image');
+
 
     // Оновлення файлів
-    if ($request->hasFile('cover_image')) {
-        $book->cover_image = $request->file('cover_image')->store('covers');
-    }
+    // if ($request->hasFile('cover_image')) {
+    //     $book->cover_image = $request->file('cover_image')->store('covers');
+    // }
 
     if ($request->hasFile('book_file')) {
         $book->book_file = $request->file('book_file')->store('books');

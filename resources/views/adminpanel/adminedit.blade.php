@@ -167,7 +167,7 @@
 
                 <div>
                     <label for="cover_image">Обкладинка</label>
-                    <input type="file" id="cover_image" name="cover_image">
+                    <input type="text" id="cover_image" name="cover_image">
                 </div>
 
                 <div>
