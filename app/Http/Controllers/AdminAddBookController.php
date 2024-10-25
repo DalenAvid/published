@@ -26,6 +26,7 @@ class AdminAddBookController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'author' => 'required|string',
             'description' => 'required|string',
             'language' => 'required|string|max:50',
             'genre' => 'required|string|max:255',
@@ -40,6 +41,7 @@ class AdminAddBookController extends Controller
         $book = new AdminAddBook();
 
         $book->title = $validatedData['title'];
+        $book->author = $validatedData['author'];
         $book->description = $validatedData['description'];
         $book->language = $validatedData['language'];
         $book->genre = $validatedData['genre'];
@@ -72,6 +74,7 @@ class AdminAddBookController extends Controller
     $book = AdminAddBook::findOrFail($id);
 
     $book->title = $request->input('title');
+    $book->author = $request->input('author');
     $book->description = $request->input('description');
     $book->language = $request->input('language');
     $book->genre = $request->input('genre');

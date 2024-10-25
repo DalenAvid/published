@@ -20,6 +20,7 @@ class IndexController extends Controller
         if ($bookData) {
             $books[] = [
                 'title' => $bookData['title'],
+                'author' => $bookData['author'],
                 'description' => $bookData['description'],
                 'language' => $bookData['language'],
                 'genre' => $bookData['genre'],

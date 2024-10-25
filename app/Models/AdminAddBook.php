@@ -12,6 +12,7 @@ class AdminAddBook extends Model
 
     protected $fillable = [
         'title',
+        'author',
         'description',
         'language',
         'genre',

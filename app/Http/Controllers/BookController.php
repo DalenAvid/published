@@ -107,6 +107,7 @@ public function store(Request $request)
     $validatedData = $request->validate([
         'user_id' => Auth::id(),
         'title' => 'required|max:255',
+        'author' =>'required',
         'description' => 'required',
         'language' => 'required|max:50',
         'genre' => 'required|max:255',

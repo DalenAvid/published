@@ -16,6 +16,7 @@ class UploadBookController extends Controller
 {
     $validatedData = $request->validate([
         'title' => 'required|string|max:255',
+        'author' => 'required|string',
         'description' => 'required|string',
         'language' => 'required|string|max:50',
         'genre' => 'required|string|max:255',
@@ -78,6 +79,7 @@ class UploadBookController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'author' => 'required|string',
             'description' => 'required|string',
             'language' => 'required|string|max:50',
             'genre' => 'required|string|max:255',
@@ -92,6 +94,7 @@ class UploadBookController extends Controller
         $book = new Book();
 
         $book->title = $validatedData['title'];
+        $book->author = $validatedData['author'];
         $book->description = $validatedData['description'];
         $book->language = $validatedData['language'];
         $book->genre = $validatedData['genre'];

@@ -25,6 +25,7 @@ class LibraryController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'author' => 'required',
             'description' => 'required',
             'language' => 'required',
             'genre' => 'required',
@@ -65,6 +66,7 @@ class LibraryController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'author' => 'required|string',
             'description' => 'required|string',
             'language' => 'required|string|max:50',
             'genre' => 'required|string|max:50',
@@ -79,6 +81,7 @@ class LibraryController extends Controller
 
         session()->put('book_data', [
             'title' => $validatedData['title'],
+            'author' => $validatedData['author'],
             'description' => $validatedData['description'],
             'language' => $validatedData['language'],
             'genre' => $validatedData['genre'],
@@ -98,6 +101,7 @@ class LibraryController extends Controller
         if ($bookData) {
             $books[] = [
                 'title' => $bookData['title'],
+                'author' => $bookData['author'],
                 'description' => $bookData['description'],
                 'language' => $bookData['language'],
                 'genre' => $bookData['genre'],
