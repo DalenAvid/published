@@ -20,7 +20,7 @@
         min-height: 100vh;
     }
 
-    
+
     /* Стилі для контенту */
     .content {
         flex-grow: 1;
@@ -49,7 +49,8 @@
         margin-bottom: 5px;
     }
 
-    input, textarea {
+    input,
+    textarea {
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ccc;
@@ -76,6 +77,38 @@
     button:hover {
         background-color: #218838;
     }
+
+    .button-back {
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: fit-content;
+        justify-self: center;
+    }
+
+    .button-back:hover {
+        background-color: darkred;
+        transition: background-color 0.3s ease;
+    }
+    .button-back-container{
+        display: grid;
+        grid-template-columns: 1fr ;
+        gap: 20px;
+        margin-top: 1.1rem;
+
+    }
+    .button-back-container a{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        position: relative;
+       
+    }
+   
 </style>
 
 <body>
@@ -138,9 +171,13 @@
                     <label for="price">Ціна</label>
                     <input type="number" id="price" name="price" step="0.01" value="{{ $book->price }}" required>
                 </div>
-
-                <button type="submit">Оновити Книгу</button>
-            </form>
+                
+                    <button type="submit">Оновити Книгу</button>
+                    
+                </form>
+                <div class="button-back-container">
+                <a class="button-back" href="{{ route('adminpanel.adminbooks') }}">Назад</a>
+                </div>
 
         </main>
     </div>

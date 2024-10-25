@@ -120,7 +120,11 @@
                                 @endempty
                             </p>
 
-                            <p class="book-rating">Рейтинг: 4.5</p>
+                            <div class="book-rating">
+                                @for ($i = 0; $i < rand(2, 5); $i++)
+                                    ⭐
+                                @endfor
+                            </div>
                             <a href="{{ route('adminaddbook.edit', $book->id) }}" class="edit-btn">Редагувати</a>
                         </div>
                     </div>
