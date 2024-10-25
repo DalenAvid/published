@@ -163,7 +163,7 @@ body {
 <body>
     <div >
         
-        <h2>Меню</h2>
+        
         <aside>
             @include('sidebar')  <!-- Подключаем боковое меню -->
         </aside>

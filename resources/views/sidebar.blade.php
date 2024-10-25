@@ -107,7 +107,7 @@
         </div>
         <h2>{{ Auth::user()->name }}</h2>
     </div>
-    <h2>Меню</h2>
+    
     <ul class="sidebar-menu">
         <li class="menu-item"><a href="{{ route('index') }}">Домівка</a><span class="arrow">></span></li>
         <li class="menu-item"><a href="{{ route('library') }}">Бібліотека</a><span class="arrow">></span></li>

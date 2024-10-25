@@ -275,7 +275,7 @@ color: #666;
 <body>
     <div >
         
-        <h2>Меню</h2>
+        
         @include('sidebar')
     </div>
 
