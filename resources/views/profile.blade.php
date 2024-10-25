@@ -297,7 +297,7 @@
                     <button class="btn btn-light">Ваші відгуки</button>
                 </div>
 
-                <div class="content">
+                {{-- <div class="content">
                     <div class="container">
                         <div class="content">
                             <div class="container">
@@ -324,8 +324,27 @@
 
 
                     </div>
+                </div> --}}
+                <div class="content">
+                    <div class="container">
+                        <div class="content">
+                            <div class="container">
+                                @foreach($books as $book)
+                                    <div class="card">
+                                        <div class="image-container">
+                                            <img src="{{ $book->cover_image ?? 'icons/default-book.png' }}" alt="Обложка книги">
+                                        </div>
+                                        <div class="info-container">
+                                            <div class="title">{{ $book->title }}</div>
+                                            <div class="author">{{ $book->author ?? 'Автор невідомий' }}</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
+                
             </div>
         </div>
     </div>

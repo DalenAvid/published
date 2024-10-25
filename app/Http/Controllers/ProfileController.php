@@ -90,4 +90,11 @@ class ProfileController extends Controller
     
         return redirect()->route('profile.show')->with('success', 'Профіль оновлено!');
     }
+    public function showUserBooks()
+{
+    $user = Auth::user(); 
+    $books = $user->books; 
+    return view('profile', compact('books'));
+}
+
 }

@@ -56,6 +56,7 @@ Route::get('login/{provider}/callback', [LoginController::class, 'handleProvider
 
 Route::get('/index', [IndexController::class, 'index'])->name('index');
 Route::resource('books', BooksController::class);
+Route::get('/profile', [ProfileController::class, 'showUserBooks'])->name('profile.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
