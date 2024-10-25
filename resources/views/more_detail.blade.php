@@ -242,6 +242,7 @@
     border-radius: 5px;
     background-color: #fff;
     transition: background-color 0.3s ease;
+    margin-top: 30px;
 }
 
 .review-button:hover {
@@ -260,7 +261,7 @@
        
         <h2>Меню</h2>
         <aside>
-            @include('sidebar')  <!-- Подключаем боковое меню -->
+            @include('sidebar')  
         </aside>
     </div>
 
@@ -296,11 +297,14 @@
 
                 <h2 style="display: inline;">Рік видання:</h2>
                 <p style="display: inline;">{{ $book->year }}</p><br>
-                <div class="reviews-link">
+                <a href="{{ route('books.reviews', ['id' => $book->id]) }}" class="review-button">
+                    Відкрити відгуки
+                </a>
+                {{-- <div class="reviews-link">
                     <a href="{{ route('book.reviews', ['id' => $book->id]) }}" class="review-button">
                         Відкрити відгуки →
                     </a>
-                </div>
+                </div> --}}
             </div>
             {{-- <div class="reviews-link">
                 <a href="{{ route('book.reviews', ['id' => $book->id]) }}" class="review-button">

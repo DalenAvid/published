@@ -70,6 +70,219 @@
         .profile-info .button1:hover {
             background-color: #2980b9;
         }
+        /* featured-books {
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px 0;
+    padding: 10px;
+    margin-left:200px;
+    gap: 50px;
+}
+
+.book-card {
+    background-color: #DACFC3;
+    padding: 10px; 
+    width: 40%; 
+    box-sizing: border-box;
+}
+
+.book-content {
+    display: flex;
+    align-items: center;
+}
+.book-content img {
+    width: 100px; 
+    height: 160px;
+    margin: 0 20px; 
+}
+
+.book-info {
+    text-align: center;
+}
+
+.book-info h3 {
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+}
+
+.book-info p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px; 
+}
+
+.content {
+    margin-left: 190px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.header-title {
+    color: black;
+    font-size: 26px;
+    font-weight: bold;
+    margin-left: 200px;
+}
+
+.header-subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-left: 220px;
+}
+
+.header-search input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #8B4D31;
+    border-radius: 20px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header-search input:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 30px;
+    margin-left: 160px;
+}
+
+.card {
+    display: flex;
+    align-items: center; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card img {
+    width: 120px; 
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.author {
+    font-size: 14px;
+    color: #555;
+}
+
+.buy {
+    background-color: #8F5E48; 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 10px 20px;
+    font-size: 14px; 
+    cursor: pointer; 
+    margin-bottom: 5px; 
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    margin-left: 230px;
+    position: relative;
+}
+
+.carousel-container {
+    overflow: hidden;
+    max-width: 820px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.carousel-item {
+    flex: 0 0 240px; 
+    margin-right: 40px; 
+}
+
+.carousel-item:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s ease;
+        
+        cursor: pointer;
+        z-index: 1;
+        position: relative;
+        
+        margin-bottom: 40px;
+
+    }
+.carousel-item img {
+    width: 140px; 
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 5px;
+}
+
+.carousel-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prev, .next {
+    background-color: #8F5E48;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.prev {
+    left: -60px; 
+}
+
+.next {
+    right: 320px; 
+}
+
+.prev.disabled, .next.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.rating {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #5a3e2b;
+} */
 .featured-books {
     display: flex;
     justify-content: flex-start;
@@ -223,7 +436,6 @@
 .carousel-item {
     flex: 0 0 240px; 
     margin-right: 40px; 
-
 }
 .carousel-item:hover {
         transform: scale(1.1);
@@ -281,6 +493,7 @@
     font-size: 14px;
     color: #5a3e2b;
 }
+
 
 </style>
 <body>
@@ -360,6 +573,7 @@
     </div>
  
 </body>
+
 <script>
      const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');

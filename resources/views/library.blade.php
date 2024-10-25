@@ -13,13 +13,11 @@
             display: flex;
         }
 
-      
         .profile-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            margin-left: 20px;
             padding: 20px 0;
         }
 
@@ -39,16 +37,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            margin-right: 15px;
             object-fit: cover;
-        }
-
-        .profile-picture h2 {
-            font-size: 16px;
-            color: #333;
-            white-space: nowrap;
-            margin-bottom: 20px;
-            margin-left: 70px;
         }
 
         .profile-info {
@@ -75,10 +64,9 @@
             background-color: #2980b9;
         }
 
-       
         .content {
-            margin-left: 250px;
             padding: 20px;
+            /* Залишено для верхнього та нижнього відступів */
             flex-grow: 1;
         }
 
@@ -93,7 +81,6 @@
             color: black;
             font-size: 26px;
             font-weight: bold;
-            margin-left: 150px;
         }
 
         .header-search input {
@@ -116,7 +103,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             justify-items: start;
-            margin-left: 160px;
         }
 
         .book-item {
@@ -124,17 +110,13 @@
             align-items: center;
             transition: transform 0.3s ease;
         }
+
         .book-item:hover {
-           
             cursor: pointer;
-            transition: transform 0.3s ease;
             transform: translateY(-5px);
-            transition: transform 0.3s ease;
-            
             border-radius: 5px;
             z-index: 1;
             position: relative;
-
         }
 
         .book-cover img {
@@ -187,7 +169,6 @@
             color: black;
             font-weight: bold;
             margin-top: 5px;
-            margin-left: 170px;
         }
     </style>
 </head>
@@ -195,7 +176,7 @@
 <body>
     <div>
 
-        
+
         <aside>
             @include('sidebar') 
         </aside>
@@ -212,44 +193,26 @@
                         <button type="submit" style="display:none;"></button>
                     </form>
                 </div>
+            </div>
+        </header>
 
-            </header>
-    
-            @foreach ($books->groupBy('genre') as $genre => $genreBooks)
-                <div class="book-genre">
-                    <h2 >{{ $genre }}</h2> 
-                </div>
-            
-                <div class="book-list">
-                    @foreach ($genreBooks as $book)
-                        <div class="book-item">
-                            <div class="book-cover">
-                                <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
-                    
-                            </div>
-                            <div class="book-info">
-                                <div class="book-title">{{ $book->title }}</div>
-                                <div class="book-author">{{ $book->author }}</div>
-                                {{-- <div class="book-author">{{ $book->user->name }}</div>  --}}
+        @foreach ($books->groupBy('genre') as $genre => $genreBooks)
+            <div class="book-genre">
+                <h2>{{ $genre }}</h2>
+            </div>
 
-                                <div class="book-author">Автор: {{ Auth::user()->name }}</div>
-                                {{-- <div class="users-list">
-                                    <h2>Зарегистрированные пользователи</h2>
-                                    <ul>
-                                        @foreach ($users as $user)
-                                            <li>{{ $user->name }} - {{ $user->email }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div> --}}
-                                
-                                {{-- <div class="book-author">
-                                    Автор: {{ $book->user ? $book->user->name : 'Невідомий автор' }}
-                                </div> --}}
-                                
-                                {{-- <div class="book-author">{{ $book->user->name }}</div> --}}
-                                <div class="book-rating">
-                                    ⭐⭐⭐⭐⭐
-                                </div>
+            <div class="book-list">
+                @foreach ($genreBooks as $book)
+                    <div class="book-item">
+                        <div class="book-cover">
+                            <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
+
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">{{ $book->title }}</div>
+                            <div class="book-author">{{ $book->author }}</div>
+                            <div class="book-rating">
+                                ⭐⭐⭐⭐⭐
                             </div>
                         </div>
                     </div>

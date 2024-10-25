@@ -25,8 +25,6 @@
             display: flex;
         }
 
-        
-
         .content {
             flex-grow: 1;
             padding: 20px;
@@ -36,8 +34,6 @@
             margin-bottom: 20px;
         }
 
-
-        /*/ Add more styles as needed */
         .content-books {
             display: flex;
             flex-wrap: wrap;
@@ -46,12 +42,10 @@
 
         .book-card {
             display: flex;
-            align-items: flex-start;
             background-color: #f9f9f9;
             padding: 10px;
-            max-width: 400px;
-            /* Видалено обмеження висоти */
-            height: auto;
+            width: 380px;
+            align-items: flex-start;
         }
 
         .book-cover {
@@ -64,7 +58,8 @@
         .book-details {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+
         }
 
         .book-title {
@@ -82,7 +77,7 @@
         .book-rating {
             font-size: 1.1em;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .edit-btn {
@@ -93,6 +88,10 @@
             font-size: 1em;
             cursor: pointer;
             border-radius: 30px;
+            align-self: flex-start;
+            /* Не розтягує кнопку */
+            margin-top: 10px;
+
         }
 
         .edit-btn:hover {
@@ -101,7 +100,7 @@
     </style>
     <div class="admin-panel">
         <aside>
-            <h2>Меню</h2>
+            <h2>Admin</h2>
             @include('adminsidebar')  <!-- Подключаем боковое меню -->
         </aside>
 
@@ -109,14 +108,20 @@
             <h1>Книги в Наявності</h1>
             <div class="content-books">
                 @foreach($books as $book)
-
                     <div class="book-card">
-                        <img src={{$book->cover_image}} alt="Обкладинка книги" class="book-cover">
+                        <img src="{{ $book->cover_image }}" alt="Обкладинка книги" class="book-cover">
                         <div class="book-details">
                             <h2 class="book-title">{{ $book->title }}</h2>
-                            <p class="book-author">{{ $book->author }}</p>
+                            <p class="book-author">
+                                @empty($book->author)
+                                    Автор не відомий
+                                @else
+                                    {{ $book->author }}
+                                @endempty
+                            </p>
+
                             <p class="book-rating">Рейтинг: 4.5</p>
-                            <button class="edit-btn">Редагувати</button>
+                            <a href="{{ route('adminaddbook.edit', $book->id) }}" class="edit-btn">Редагувати</a>
                         </div>
                     </div>
                 @endforeach

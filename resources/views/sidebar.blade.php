@@ -10,8 +10,9 @@
         align-items: center;
         height: 100vh;
         background-color: #fff;
-        /* Фон для прикладу */
         padding-top: 20px;
+        margin-left: 50px;
+        right: 100px;
     }
 
     .profile-section {
@@ -20,14 +21,10 @@
         width: 100%;
         padding: 20px 0;
         background-color: #fff;
-        /* Додано фон для секції профілю */
-        
-        /* Нижня границя для розділення секції */
     }
 
     .profile-picture {
         margin-bottom: 10px;
-        /* Відступ знизу між зображенням і текстом */
     }
 
     .profile-picture img {

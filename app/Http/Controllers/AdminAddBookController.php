@@ -61,4 +61,50 @@ class AdminAddBookController extends Controller
 
         return redirect()->route('adminpanel.adminbooks')->with('success', 'Книга додана успішно!');
     }
+
+    public function edit($id)
+    {
+        $book = AdminAddBook::findOrFail($id);
+        return view('adminpanel.adminedit', compact('book'));
+    }
+    public function update(Request $request, $id)
+{
+    $book = AdminAddBook::findOrFail($id);
+
+    $book->title = $request->input('title');
+    $book->description = $request->input('description');
+    $book->language = $request->input('language');
+    $book->genre = $request->input('genre');
+    $book->age = $request->input('age');
+    $book->year = $request->input('year');
+    $book->pages = $request->input('pages');
+    $book->price = $request->input('price');
+
+    // Оновлення файлів
+    if ($request->hasFile('cover_image')) {
+        $book->cover_image = $request->file('cover_image')->store('covers');
+    }
+
+    if ($request->hasFile('book_file')) {
+        $book->book_file = $request->file('book_file')->store('books');
+    }
+
+    $book->save();
+
+    return redirect()->route('adminaddbook.store')->with('success', 'Книга успішно оновлена!');
+}
+
+    public function destroy($id)
+    {
+        $book = AdminAddBook::findOrFail($id);
+        $book->delete();
+        return redirect()->route('adminaddbook.store')->with('success', 'Книга успішно видалена!');
+    }
+    // public function show($id)
+    // {
+    //     $book = AdminAddBook::findOrFail($id);
+    //     return view('admin.books.show', compact('book'));
+    // }
+
+
 }

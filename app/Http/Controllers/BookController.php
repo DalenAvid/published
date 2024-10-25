@@ -18,7 +18,7 @@ class BookController extends Controller
         return view('books.index', compact('books'));
     }
     public function show($id) {
-        $books = Book::findOrFail($id); 
+        $book = Book::findOrFail($id); 
         return view('more_detail', compact('book'));
     }
     
