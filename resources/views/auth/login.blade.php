@@ -44,7 +44,7 @@
         .form-container h1 {
             font-weight: bold;
             color: #8B4D31;
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: -17px; 
         }
         .form-container p {
@@ -67,7 +67,7 @@
             padding: 0.5rem;
             box-sizing: border-box;
             margin-bottom: 0.5rem;
-            background-color: #ffffff;
+            background:none !important; ;
             border: 1px solid #994D31; 
         }
         .form-group button {

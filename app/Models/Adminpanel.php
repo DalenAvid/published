@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Adminpanel extends Model
 {
     use HasFactory;
+    
 }
