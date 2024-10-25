@@ -116,11 +116,11 @@ public function store(Request $request)
         'pages' => 'required|integer',
         'price' => 'required|numeric',
         'book_file' => 'required|mimes:pdf,fb2|max:10240', 
-        'cover_image' => 'required|mimes:jpg,jpeg|max:2048',
+        'cover_image' => 'required|string|max:255',
     ]);
 
     $bookFilePath = $request->file('book_file')->store('books');
-    $coverImagePath = $request->file('cover_image')->store('covers');
+    //$coverImagePath = $request->file('cover_image')->store('covers');
 
     Book::create([
          'user_id' => Auth::id(),
@@ -133,7 +133,7 @@ public function store(Request $request)
         'pages' => $validatedData['pages'],
         'price' => $validatedData['price'],
         'book_file' => $bookFilePath,
-        'cover_image' => $coverImagePath,
+        'cover_image' => $validatedData['cover_image']
     ]);
 
     return redirect()->back()->with('success', 'Книга успішно додана!');

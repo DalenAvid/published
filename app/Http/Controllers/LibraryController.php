@@ -32,7 +32,7 @@ class LibraryController extends Controller
             'age' => 'required',
             'year' => 'required|integer',
             'pages' => 'required|integer',
-            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => 'required',
             'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048', // Додано для перевірки
         ]);
 
@@ -44,11 +44,12 @@ class LibraryController extends Controller
         $book->age = $request->age;
         $book->year = $request->year;
         $book->pages = $request->pages;
+        $book->cover_image = $request->cover_image;
 
-        if ($request->hasFile('cover_image')) {
-            $coverImage = $request->file('cover_image')->store('covers', 'public');
-            $book->cover_image = $coverImage;
-        }
+        // if ($request->hasFile('cover_image')) {
+        //     $coverImage = $request->file('cover_image')->store('covers', 'public');
+        //     $book->cover_image = $coverImage;
+        // }
 
         if ($request->hasFile('book_file')) { // Додано для обробки файлів книг
             $bookFile = $request->file('book_file')->store('books', 'public');
@@ -74,7 +75,7 @@ class LibraryController extends Controller
             'year' => 'required|integer',
             'pages' => 'required|integer',
             'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048', // Додано для валідації
-            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => 'required|string|max:255',
         ]);
 
         $coverImagePath = $request->file('cover_image')->store('public/covers');
@@ -88,7 +89,7 @@ class LibraryController extends Controller
             'age' => $validatedData['age'],
             'year' => $validatedData['year'],
             'pages' => $validatedData['pages'],
-            'cover_image_path' => $coverImagePath,
+            'cover_image_path' => $validatedData['cover_image'],
         ]);
 
         return redirect()->route('preview.new');

@@ -169,8 +169,8 @@
 
                 <div class="file-upload">
                     <span>+</span> <!-- Плюс по центру -->
-                    <label for="cover_image" style="cursor: pointer;">Обкладинка книги:</label>
-                    <input type="file" id="cover_image" name="cover_image" accept="image/*" required>
+                    <label for="cover_image" >Обкладинка книги:</label>
+                    <input type="text" id="cover_image" name="cover_image"  required>
                 </div>
 
                 <div>

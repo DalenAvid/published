@@ -24,17 +24,17 @@ class UploadBookController extends Controller
         'year' => 'required|integer',
         'pages' => 'required|integer',
         'book_file' => 'required|file|max:2048',
-        'cover_image' => 'required|file|max:2048',
+        'cover_image' => 'required|string|max:255',
         'price' => 'required|numeric',
     ]);
 
     // Зберігаємо файли на диску
     $bookFilePath = $request->file('book_file')->store('books');
-    $coverImagePath = $request->file('cover_image')->store('covers');
+    //$coverImagePath = $request->file('cover_image')->store('covers');
 
     // Додаємо шляхи до файлів у дані для сесії
     $validatedData['book_file'] = $bookFilePath;
-    $validatedData['cover_image'] = $coverImagePath;
+    //$validatedData['cover_image'] = $coverImagePath;
 
     // Зберігаємо валідаційні дані в сесії
     $request->session()->put('book_data', $validatedData);
@@ -43,37 +43,7 @@ class UploadBookController extends Controller
 }
 
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'book_file' => 'required|file|mimes:pdf,doc,docx|max:2048',
-    //         'cover_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-    //         'title' => 'required|string|max:255',
-    //         'description' => 'required|string',
-    //         'language' => 'required|string|max:50',
-    //         'genre' => 'required|string|max:50',
-    //         'age' => 'required|string|max:50',
-    //         'year' => 'required|integer',
-    //         'pages' => 'required|integer',
-    //         'price' => 'required|numeric',
-    //     ]);
-    //     $bookFilePath = $request->file('book_file')->store('books');
-    //     $coverImagePath = $request->file('cover_image')->store('covers');
-    //     Book::create([
-    //         'title' => $request->title,
-    //         'description' => $request->description,
-    //         'language' => $request->language,
-    //         'genre' => $request->genre,
-    //         'age' => $request->age,
-    //         'year' => $request->year,
-    //         'pages' => $request->pages,
-    //         'price' => $request->price,
-    //         'book_file' => $bookFilePath,
-    //         'cover_image' => $coverImagePath,
-    //     ]);
-
-    //     return redirect()->route('library')->with('success', 'Книга успішно завантажена!');
-    // }
+    
 
     public function store(Request $request)
     {
@@ -87,7 +57,7 @@ class UploadBookController extends Controller
             'year' => 'required|integer',
             'pages' => 'required|integer',
             'book_file' => 'required|file|max:2048',
-            'cover_image' => 'required|file|max:2048',
+            'cover_image' => 'required|string|max:255',
             'price' => 'required|numeric',
         ]);
 
@@ -102,15 +72,16 @@ class UploadBookController extends Controller
         $book->year = $validatedData['year'];
         $book->pages = $validatedData['pages'];
         $book->price = $validatedData['price'];
+        $book->cover_image = $validatedData['cover_image'];
 
         // Обробка файлів
         if ($request->hasFile('book_file')) {
             $book->book_file = $request->file('book_file')->store('books');
         }
 
-        if ($request->hasFile('cover_image')) {
-            $book->cover_image = $request->file('cover_image')->store('covers');
-        }
+        // if ($request->hasFile('cover_image')) {
+        //     $book->cover_image = $request->file('cover_image')->store('covers');
+        // }
 
         $book->save();
 
