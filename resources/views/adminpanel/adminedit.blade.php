@@ -126,7 +126,10 @@
                     <label for="title">Назва книги</label>
                     <input type="text" id="title" name="title" value="{{ $book->title }}" required>
                 </div>
-
+                <div>
+                    <label for="author">Автор</label>
+                    <input type="text" id="author" name="author" value="{{ $book->author }}" required>
+                </div>
                 <div>
                     <label for="description">Опис</label>
                     <textarea id="description" name="description" required>{{ $book->description }}</textarea>

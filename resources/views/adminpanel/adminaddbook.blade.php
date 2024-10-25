@@ -93,7 +93,10 @@
                     <label for="title">Назва книги</label>
                     <input type="text" id="title" name="title" required>
                 </div>
-
+                <div>
+                    <label for="author">Автор</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
                 <div>
                     <label for="description">Опис</label>
                     <textarea id="description" name="description" required></textarea>

@@ -9,6 +9,7 @@
             @foreach ($books as $book)
                 <li>
                     <h2>{{ $book->title }}</h2>
+                    <p>Автор: {{ $book->author }}</p>
                     <p>Опис: {{ $book->description }}</p>
                     <p>Мова: {{ $book->language }}</p>
                     <p>Жанр: {{ $book->genre }}</p>
